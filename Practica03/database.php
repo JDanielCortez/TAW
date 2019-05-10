@@ -62,9 +62,9 @@
             $sql = "DELETE FROM clientes WHERE id='$id'";
             $res = mysqli_query($this->con, $sql);
             if ($res) {
-                return true;
+                return $res;
             } else {
-                return false;
+                return $res;
             }
         }
     }

@@ -47,7 +47,7 @@
                         <th>Nombre</th>
                         <th>Teléfono</th>
                         <th>Dirección</th>
-						<th>E-ail</th>
+						<th>E-mail</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
