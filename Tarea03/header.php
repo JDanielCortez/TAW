@@ -8,7 +8,7 @@
     <script src="./js/vendor/modernizr.js"></script>
   </head>
   <body>
-<div class="row">
+    <div class="row">
       <div class="large-3 columns">
         <h1><img src="./img/logo.png"/></h1>
       </div>
