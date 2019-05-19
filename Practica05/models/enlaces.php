@@ -1,10 +1,12 @@
 <?php
     class EnlacesPaginas{
         public function enlacesPaginasModel($enlacesModel){
-            if($enlacesModel == "nosotros" || 
-            $enlacesModel == "servicios" || 
-            $enlacesModel == "contactenos"){
-
+            if($enlacesModel == "productos" || 
+            $enlacesModel == "ventas" ||
+            $enlacesModel == "usuarios" ||
+            $enlacesModel == "productos" || 
+            $enlacesModel == "registrarUsuario" ||
+            $enlacesModel == "salir"){
                 $module = "views/modules/".$enlacesModel.".php";
             }
             else if($enlacesModel == "index"){

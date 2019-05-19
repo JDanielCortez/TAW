@@ -2,17 +2,10 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Template</title>
+	<title>Practica 05</title>
 
-	<style>
+		<style>
 
-		header{
-			position:relative;
-			margin:auto;
-			text-align:center;
-			padding:5px;	
-		}
-		
 		nav{
 			position:relative;
 			margin:auto;
@@ -30,7 +23,7 @@
 
 		nav ul li{
 			display:inline-block;
-			width:24%;
+			width:20%;
 			line-height: 50px;
 			list-style: none;
 		}
@@ -41,17 +34,53 @@
 		}
 
 		section{
-			position:relative;
-			padding:20px;
+			position: relative;
+			margin: auto;
+			width:400px;
 		}
-	
+
+		section h1{
+			position: relative;
+			margin: auto;
+			padding:10px;
+			text-align: center;
+		}
+
+		section form{
+			position:relative;
+			margin:auto;
+			width:400px;
+		}
+
+		section form input, select{
+			display:inline-block;
+			padding:10px;
+			width:100%;
+			margin:5px;
+		}
+
+		section form input[type="submit"]{
+			position:relative;
+			margin:20px auto;
+			left: 15px;
+		}
+
+		table{
+			position:relative;
+			margin:auto;
+			width:100%;
+		}
+
+		table thead tr th{
+			padding:10px;
+		}
+
+		table tbody tr td{
+			padding:10px;
+		}
 	</style>
 </head>
 <body>
-		<header>
-			<h1>Bienvenido</h1>
-		</header>
-
 		<?php
 			include "modules/navegacion.php";
 		?>
