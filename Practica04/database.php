@@ -4,7 +4,7 @@
         private $con;
         private $dbhost = "localhost";
         private $dbuser = "root";
-        private $dbpass = "";
+        private $dbpass = "danielcortez98";
         private $dbname = "tuto_poo";
 
         public function __construct(){
