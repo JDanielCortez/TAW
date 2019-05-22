@@ -7,7 +7,7 @@
 	<meta name="description" content="">
 	<meta name="author" content="">
 
-	<title>Home - Ninja Admin Template</title>
+	<title>Sistema de Reservas de Hotel</title>
 
 	<!-- Main Styles -->
 	<link rel="stylesheet" href="assets/styles/style.min.css">
@@ -37,28 +37,23 @@
 <body>
     
 <?php
-	include "modules/navegacion.php";
-?>
+	session_start();
+	
+	if(isset($_SESSION['validar']) and $_SESSION['validar']==true){
+		include "modules/navegacion.php";?>
+		<div id="wrapper">
+			<div class="main-content">
+				<div class="row small-spacing">
+					<div class="col-xs-12">
+					<?php
+	}
 
-<div id="wrapper">
-	<div class="main-content">
-		<div class="row small-spacing">
-			<div class="col-xs-12">
-				<?php
-					/** AQUI VA LO DE ENLACES PAGINAS CONTROLLER */
-				?>
-			</div>
-		</div>
-		<!-- /.row -->		
-		<footer class="footer">
-			<ul class="list-inline">
-				<li>2016 © NinjaAdmin.</li>
-				<li><a href="#">Privacy</a></li>
-				<li><a href="#">Terms</a></li>
-				<li><a href="#">Help</a></li>
-			</ul>
-		</footer>
-	</div>
+	/** AQUI VA LO DE ENLACES PAGINAS CONTROLLER */
+	
+	$mvc = new MvcController();
+	$mvc -> enlacesPaginasController();
+	
+	?>
 
     <!-- Placed at the end of the document so the pages load faster -->
 	<script src="assets/scripts/jquery.min.js"></script>

@@ -1,19 +1,19 @@
 <?php
     class EnlacesPaginas{
         public function enlacesPaginasModel($enlacesModel){
-            if($enlacesModel == "productos" || 
-            $enlacesModel == "ventas" ||
+            if($enlacesModel == "login" || 
+            $enlacesModel == "habitaciones" ||
+            $enlacesModel == "clientes" ||
+            $enlacesModel == "ganancias" || 
             $enlacesModel == "usuarios" ||
-            $enlacesModel == "productos" || 
-            $enlacesModel == "registrarUsuario" ||
             $enlacesModel == "salir"){
                 $module = "views/modules/".$enlacesModel.".php";
             }
             else if($enlacesModel == "index"){
-                $module = "views/modules/inicio.php";
+                $module = "views/modules/habitaciones.php";
             }
             else{
-                $module = "views/modules/inicio.php";
+                $module = "views/modules/habitaciones.php";
             }
 
             return $module;
