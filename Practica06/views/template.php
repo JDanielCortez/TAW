@@ -31,6 +31,11 @@
 	<link rel="stylesheet" href="assets/plugin/fullcalendar/fullcalendar.min.css">
 	<link rel="stylesheet" href="assets/plugin/fullcalendar/fullcalendar.print.css" media='print'>
 
+	<!-- Data Tables -->
+	<link rel="stylesheet" href="assets/plugin/datatables/media/css/dataTables.bootstrap.min.css">
+	<link rel="stylesheet" href="assets/plugin/datatables/extensions/Responsive/css/responsive.bootstrap.min.css">
+
+
 	<!-- Dark Themes -->
 	<link rel="stylesheet" href="assets/styles/style-dark.min.css">
 </head>

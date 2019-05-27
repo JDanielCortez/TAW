@@ -6,6 +6,7 @@
             $enlacesModel == "clientes" ||
             $enlacesModel == "ganancias" || 
             $enlacesModel == "usuarios" ||
+            $enlacesModel == "reservaciones" ||
             $enlacesModel == "salir"){
                 $module = "views/modules/".$enlacesModel.".php";
             }

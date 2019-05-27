@@ -1,21 +1,52 @@
 
-<div id="">
-	<form method="post" class="frm-single">
-		<div class="inside">
-			<div class="title"><strong>Registrar</strong>&nbsp;Cliente</div>
-			<div class="frm-input"><input type="text" placeholder="Nombre" name="nombreCliente" class="frm-inp" value="" required><i class="fa fa-user frm-ico"></i></div>
-			<!-- /.frm-input -->
-			<div class="frm-input"><input type="email" placeholder="E-mail" name="correoCliente" class="frm-inp" requiered><i class="fa fa-envelope frm-ico"></i></div>
-			<!-- /.frm-input -->
-            <div class="frm-input"><input type="input" placeholder="Teléfono" name="telefonoCliente" class="frm-inp" requiered><i class="fa fa-phone frm-ico"></i></div>
-			<!-- /.frm-input -->
+<?php
+	if(!isset($_SESSION['validar'])){
+		header("location:index.php?action=login");
+		exit();
+	
+	}
 
-			<!-- /.clearfix -->
-			<button type="submit" class="frm-submit">Aceptar<i class="fa fa-arrow-circle-right"></i></button>
+$cliente = new MvcController();
+$cliente -> insertarClienteController();
+$cliente -> actualizarClienteController();
+$cliente -> borrarClienteController();
+if(isset($_GET['registrar'])){
+	$cliente->registrarClienteController();   
+}
+else if(isset($_GET['id'])){
+    $cliente -> editarClienteController();
+}else{?>
+	<div class="box-content">
+            <h4 class="box-title">Listado de Clientes</h4>
+            <!-- /.box-title -->    
+			<div class="dropdown js__drop_down">
+            <a href="index.php?action=clientes&registrar" class="btn btn-info btn-xs waves-effect waves-light" title="Agregar" data-toggle="tooltip"><i class="fa fa-plus">Agregar Cliente</i></a>
+            </div>
+            <table  id="example" class="table table-striped table-bordered display" style="width:100%;" >
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Correo</th>
+                        <th>Telefono</th>
+                        <th>Tipo</th>
+						<th>Acciones</th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+						<th>Nombre</th>
+                        <th>Correo</th>
+                        <th>Telefono</th>
+                        <th>Tipo</th>
+						<th>Acciones</th>
+                    </tr>
+                </tfoot>
+				<tbody>
+					<?php
+						$cliente->vistaClientesController();
+					?>
+				</tbody>
+				<?php
+}
 
-		</div>
-		<!-- .inside -->
-	</form>
-	<!-- /.frm-single -->
-</div><!--/#single-wrapper -->
-
+?>

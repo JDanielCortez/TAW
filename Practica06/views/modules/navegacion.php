@@ -36,26 +36,24 @@
 			if(isset($_SESSION['tipoUsuario']) and $_SESSION['tipoUsuario'] == 'Recepcionista'){
 				?>
 				<li class="current">
-						<a class="waves-effect" href="index.php?action=reservaciones"><i class="menu-icon fa fa-calendar "></i><span>Reservaciones</span></a>
+						<a class="waves-effect" href="index.php?action=reservaciones"><i class="menu-icon fa fa-calendar"></i><span>Reservaciones</span></a>
 				</li>
 			<?php
 			}
 			if(isset($_SESSION['tipoUsuario']) and $_SESSION['tipoUsuario'] == 'Administrador'){
 			?>
 				<li class="current">
-						<a class="waves-effect" href="index.php?action=clientes"><i class="menu-icon fa fa-user "></i><span>Clientes</span></a>
+						<a class="waves-effect" href="index.php?action=clientes"><i class="menu-icon fa fa-user"></i><span>Clientes</span></a>
 				</li>
 				<li class="current">
-						<a class="waves-effect" href="index.php?action=usuarios"><i class="menu-icon fa fa-users "></i><span>Usuarios</span></a>
+						<a class="waves-effect" href="index.php?action=usuarios"><i class="menu-icon fa fa-users"></i><span>Usuarios</span></a>
 				</li>
 				<li class="current">
-						<a class="waves-effect" href="index.php?action=ganancias"><i class="menu-icon fa fa-line-chart "></i><span>Ganancias</span></a>
+						<a class="waves-effect" href="index.php?action=ganancias"><i class="menu-icon fa fa-line-chart"></i><span>Ganancias</span></a>
 				</li>
-			<?php
-			}
-			?>
+			<?php } ?>
 			<li class="current">
-					<a class="waves-effect" href="index.php?action=salir"><i class="menu-icon fa fa-power-off "></i><span>Cerrar sesion</span></a>
+					<a class="waves-effect" href="index.php?action=salir"><i class="menu-icon fa fa-power-off"></i><span>Cerrar sesion</span></a>
 			</li>
 			
 			</ul>
@@ -67,10 +65,13 @@
 	<!-- /.content -->
 </div>
 
+$resultado = "";
+<?php if(isset($_GET['action'])){ $resultado = strtoupper($_GET['action']);}else{ $resultado = 'INICIO';} ?>
+<?php if($_GET['action'] == 'salir'){ header('location: index.php?action=login');	 } ?>
 <div class="fixed-navbar">
 	<div class="pull-left">
 		<button type="button" class="menu-mobile-button glyphicon glyphicon-menu-hamburger js__menu_mobile"></button>
-		<h1 class="page-title"><?php if(isset($respuesta)){echo $respuesta;}else{echo "HOME";}?></h1>
+		<h1 class="page-title"><?php echo $resultado; ?></h1>
 		<!-- /.page-title -->
 	</div>
 	<!-- /.pull-left -->
