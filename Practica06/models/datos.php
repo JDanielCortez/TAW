@@ -430,6 +430,89 @@
            $stmt->close();
    
        }
+      
+      //Registro de Usuario -  Metodo para la creacion de un usario del sistema, recibe como parametros un array de datos y el nombre de la tabla
+        public function registroreservacionModel($datosModel, $tabla){
+            //Se realiza la conexion y se prepara la consulta de insercion
+            $stmt = Conexion::conectar()->prepare("INSERT INTO $tabla (id_habitacion, id_cliente, fecha_entrada, numero_noches) VALUES (:id_habitacion, :id_cliente, :fecha, :numero)");	
+    
+            //Se definen los valores de los parametros indicados en la sentencia y que indican los datos que se insertaran
+            $stmt->bindParam(":id_habitacion", $datosModel["habitacion"], PDO::PARAM_INT);
+            $stmt->bindParam(":id_cliente", $datosModel["cliente"], PDO::PARAM_INT);
+            $stmt->bindParam(":fecha", $datosModel["fecha"], PDO::PARAM_STR);
+            $stmt->bindParam(":numero", $datosModel["numero"], PDO::PARAM_STR);
+    
+            //Ejecuta la sentencia y verifica su estado tras ser ejecutada
+            //En caso de ser exitosa regresa el mensaje success
+            if($stmt->execute()){
+                return "success";
+            }
+            //En caso de fallar regresa el mensaje de error
+            else{
+                return "error";
+            }
 
+            $stmt->close();
+    
+        }
+
+      //Editar Reservacion - Metodo para realizar una consulta a partir de un id ($datosModel), y regresar los datos de ese registro en especifico, y el nombre de la tabla, en si lo que hace es una busqueda
+        public function editarReservacionModel($datosModel, $tabla){
+            //Se realiza la conexion y se prepara la consulta de busquda
+           $stmt = Conexion::conectar()->prepare("SELECT id, id_habitacion, id_cliente, fecha_entrada, numero_noches FROM $tabla WHERE id = :id");
+           
+           //Parametros de la consulta
+           $stmt->bindParam(":id", $datosModel, PDO::PARAM_INT);	
+
+           //Se ejecuta la consulta
+           $stmt->execute();
+   
+           // se regresa el resultado de la consulta
+           return $stmt->fetch();
+   
+           $stmt->close();
+   
+       }
+      
+      #ACTUALIZAR Cliente - Metodo para cambiar los datos de un registro existente, recibe como parametros un array con los datos que se almacenaran y el nombre de la tabla
+        public function actualizarReservacionModel($datosModel, $tabla){
+            //Se realiza la conexion y se prepara la consulta de insercion
+            $stmt = Conexion::conectar()->prepare("UPDATE $tabla SET id_habitacion = :habitacion, id_cliente = :cliente, numero_noches = :noches, fecha_entrada = :fecha  WHERE id = :id");
+
+            //Parametros de la consulta
+            $stmt->bindParam(":habitacion", $datosModel["habitacion"], PDO::PARAM_STR);
+            $stmt->bindParam(":cliente", $datosModel["cliente"], PDO::PARAM_INT);
+            $stmt->bindParam(":noches", $datosModel["noches"], PDO::PARAM_STR);
+            $stmt->bindParam(":fecha", $datosModel["fecha"], PDO::PARAM_STR);
+            $stmt->bindParam(":id", $datosModel["id"], PDO::PARAM_INT);
+
+             //Ejecuta la sentencia y verifica su estado tras ser ejecutada
+            //En caso de ser exitosa regresa el mensaje success
+            if($stmt->execute()){
+                return "success";
+            }
+
+            else{
+                return "error";
+            }
+            $stmt->close();
+        }
+
+        //Eliminar Reservacion
+        public function borrarReservacionModel($datosModel, $tabla){
+
+            $stmt = Conexion::conectar()->prepare("DELETE FROM $tabla WHERE id = :id");
+            $stmt->bindParam(":id", $datosModel, PDO::PARAM_INT);
+    
+            if($stmt->execute()){
+                return "success";
+            }
+            else{
+                return "error";
+            }
+            //En caso de fallar regresa el mensaje de error
+            $stmt->close();
+    
+        }
     }
 ?>

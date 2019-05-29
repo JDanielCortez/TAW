@@ -682,6 +682,200 @@
     
         }
 
+        //Metodo para mostrar el formulario de registro de cliente
+        public function registrarRervacionController(){
+            //llamada la metodo del modelo para recuperar los datos que seran mostrados
+            $respuesta = Datos::vistaHabitacionesModel("habitaciones");
+        ?>
+            <div id="">
+            <form method="post" class="frm-single " action="index.php?action=reservaciones">
+                <div class="inside">
+                    <div class="title"><strong>Registrar</strong>&nbsp;Reservación</div>
+                  
+                  <div class="form-group margin-bottom-20">
+                        <select class="form-control" name="habitacion">
+                            <option value="">Número de habitación</option>
+                           <?php foreach($respuesta as $row => $item){ ?>
+                            <option value="<?php echo $item['id']; ?>"><?php echo $item['id'].' - '.$item['tipo'] ?></option>
+                           <?php } ?>
+                        </select>
+                    </div>
 
+                  <?php 
+                    //llamada la metodo del modelo para recuperar los datos que seran mostrados
+                    $respuesta = Datos::vistaClientesModel("clientes"); 
+                  ?>
+                  
+                  <div class="form-group margin-bottom-20">
+                        <select class="form-control" name="cliente">
+                            <option value="">Cliente</option>
+                           <?php foreach($respuesta as $row => $item){ ?>
+                            <option value="<?php echo $item['id']; ?>"><?php echo $item['nombre'] ?></option>
+                           <?php } ?>
+                        </select>
+                    </div>
+                 
+										<div class="input-group margin-bottom-20">
+											<input type="date" class="form-control" placeholder="mm/dd/yyyy" id="datepicker-autoclose" name="fecha">
+											<span class="input-group-addon bg-primary text-white"><i class="fa fa-calendar"></i></span>
+										</div>
+
+                   <div class="frm-input"><input type="number" placeholder="Número de noches" name="numeroNoches" class="frm-inp" value="<?php echo $respuesta['telefono']?>" requiered><i class="fa fa-clock-o frm-ico"></i></div>
+                  
+                    <button type="submit" class="frm-submit btn">Aceptar<i class="fa fa-arrow-circle-right"></i></button>
+                    
+                </div>
+                <!-- .inside -->
+            </form>
+            <!-- /.frm-single -->
+        </div><!--/#single-wrapper -->
+        <?php
+        }
+      
+      
+      ///Registro de reservacion
+        public function insertarReservacionController(){
+            //Valida que los campos hayan sido llenados
+            if(isset($_POST["numeroNoches"])){
+                //los datos que seran insertados en la base de datos se almacenan en una array que sera enviado como parametro al metodo que realiza la insercion
+                $datosController = array("habitacion"=>$_POST["habitacion"], 
+                                         "cliente"=>$_POST["cliente"],
+                                         "fecha"=>$_POST["fecha"],
+                                        "numero"=>$_POST["numeroNoches"]);
+    
+                //Llamada al metodo del modelo realiazar la insercion, envia como parametro el array con los datos a insertar y el nombre de la tabla en la cual seran insertados los datos
+                $respuesta = Datos::registroReservacionModel($datosController, "reservaciones");
+    
+                //Verifica si la insercion ha sido exitosa
+                //en caso de ser exitosa mostrara un mensaje que indica el exito de la accion
+                if($respuesta == "success"){
+                    echo '<div class="box-content bg-success text-white">
+                        <p>Se han insertado los datos exitosamente</p>
+                    </div>';
+                }
+                //En caso de que haya fallado la insercion se motrara un mensaje indicando el fallo
+                else{
+                    echo '<div class="box-content bg-danger text-white">
+                        <p>No ha sido posible guardar los datos</p>
+                    </div>';
+                }
+    
+            }
+    
+        }
+      
+      //Editar Reservacion
+        public function editarReservacionController(){
+            //Se almacena el id selecciono del registro seleccionado 
+            $datosController = $_GET["id"];
+            //Se hace un llamado al metodo del modelo que hace una consulta para traer los registros con ese id
+            $respuestaEditar = Datos::editarReservacionModel($datosController, "reservaciones");
+            //Se muestran los campos con los datos recuperados tras la consulta
+            $respuesta = Datos::vistaHabitacionesModel("habitaciones");
+        ?>
+            <div id="">
+            <form method="post" class="frm-single " action="index.php?action=reservaciones">
+                <div class="inside">
+                    <div class="title"><strong>Registrar</strong>&nbsp;Reservación</div>
+                  
+                   <div class="frm-input"><input type="hidden" name="idEditarReservacion" class="frm-inp" value="<?php echo $respuestaEditar['id']?>" requiered></i></div>
+                  
+                  <div class="form-group margin-bottom-20">
+                        <select class="form-control" name="habitacionEditar">
+                            <option value="">Número de habitación</option>
+                           <?php foreach($respuesta as $row => $item){ ?>
+                            <option value="<?php echo $item['id']; ?>" selected= "<?php if($respuestaEditar['id_habitacion'] == $item['id']){ echo 'selected';}?>"><?php echo $item['id'].' - '.$item['tipo'] ?></option>
+                           <?php } ?>
+                        </select>
+                    </div>
+
+                  <?php 
+                    //llamada la metodo del modelo para recuperar los datos que seran mostrados
+                    $respuesta = Datos::vistaClientesModel("clientes"); 
+                  ?>
+                  
+                  <div class="form-group margin-bottom-20">
+                        <select class="form-control" name="clienteEditar">
+                            <option value="">Cliente</option>
+                           <?php foreach($respuesta as $row => $item){ ?>
+                            <option value="<?php echo $item['id']; ?>" selected =" <?php if($respuestaEditar['id_cliente'] == $item['id']){ echo 'selected';}?>"><?php echo $item['nombre'] ?></option>
+                           <?php } ?>
+                        </select>
+                    </div>
+                 
+										<div class="input-group margin-bottom-20">
+											<input type="date" class="form-control" placeholder="mm/dd/yyyy" id="datepicker-autoclose" name="fechaEditar" value="<?php echo date('Y-m-d',strtotime(str_replace('-', '/', $respuestaEditar['fecha_entrada'])))?>">
+											<span class="input-group-addon bg-primary text-white"><i class="fa fa-calendar"></i></span>
+										</div>
+
+                   <div class="frm-input"><input type="number" placeholder="Número de noches" name="numeroNochesEditar" class="frm-inp" value="<?php echo $respuestaEditar['numero_noches']?>" requiered><i class="fa fa-clock-o frm-ico"></i></div>
+                  
+                    <button type="submit" class="frm-submit btn">Aceptar<i class="fa fa-arrow-circle-right"></i></button>
+                    
+                </div>
+                <!-- .inside -->
+            </form>
+            <!-- /.frm-single -->
+        </div><!--/#single-wrapper -->
+        <?php
+        }
+      
+      //Actualizar Reservacion
+        //Una vez se han cambiado los datos, en los campos y se da clic en aceptar se recarga la pagina para que la llamada al metodo de actalizacion se realice
+        public function actualizarReservacionController(){
+            //Para realizar la actualizacio  es necesario que se encuentre en el POST el campo con el nombre que hace referencia a EDITAR
+            if(isset($_POST["idEditarReservacion"])){
+                //Se crea un array con los datos que se reciben del post (de los campos que se llenan), el cual sera enviado al metodo de actualizar para modificar los registros de la base de datos
+                $datosController = array("id"=>$_POST["idEditarReservacion"],
+                                            "habitacion"=>$_POST["habitacionEditar"],
+                                            "cliente"=>$_POST["clienteEditar"],
+                                            "noches"=>$_POST["numeroNochesEditar"],
+                                            "fecha"=>$_POST["fechaEditar"]);
+                //Se hace el llamado al metodo actualizar y se le envian dos parametros: el array con los datos y el nombre de la tabla en la que se hace la modificacion
+                $respuesta = Datos::actualizarReservacionModel($datosController, "reservaciones");
+                
+                //verifica el resultado del llamado al metodo anterior
+                //Si ha sido exitoso mostrara un mensaje indicando el exito de la operacion
+                if($respuesta == "success"){
+                    echo '<div class="box-content bg-success text-white">
+                        <p>Se han guardado los cambios exitosamente</p>
+                    </div>';
+                }
+                //En caso de no ser exitoso se muestra un mensaje indicando el fallo del metodo
+                else{
+                    echo '<div class="box-content bg-danger text-white">
+                        <p>No ha sido posible guardar los cambios</p>
+                    </div>';
+                }
+    
+            }
+        
+        }
+      //borrarReservacionController
+      //Eliminar Reservacion
+        public function borrarReservacionController(){
+            //recupera el id del enlace, este sera usado para hacer referencia al registro a eliminar
+            if(isset($_GET["idBorrar"])){
+                //datosController almcen el id para ser enviado como parametro
+                $datosController = $_GET["idBorrar"];
+                //Se realiza el llamado al metodo en el modelo encargado de la eliminacion
+                $respuesta = Datos::borrarReservacionModel($datosController, "reservaciones");
+                
+                //verifica el resultado del llamado al metodo anterior
+                //Si ha sido exitoso mostrara un mensaje indicando el exito de la operacion
+                if($respuesta == "success"){
+                    echo '<div class="box-content bg-success text-white">
+                        <p>Se han eliminado los datos exitosamente</p>
+                    </div>';
+                }
+                //En caso de no ser exitoso se muestra un mensaje indicando el fallo del metodo
+                else{
+                    echo '<div class="box-content bg-danger text-white">
+                        <p>No ha sido posible eliminar los datos</p>
+                    </div>';
+                }
+            }
+    
+        }
     }
 ?>

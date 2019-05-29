@@ -7,20 +7,20 @@
 	}
 
 $reserva = new MvcController();
-//$cliente -> insertarClienteController();
-//$cliente -> actualizarClienteController();
-//$cliente -> borrarClienteController();
+$reserva -> insertarReservacionController();
+$reserva -> actualizarReservacionController();
+$reserva -> borrarReservacionController();
 if(isset($_GET['registrar'])){
-	$cliente->registrarClienteController();   
+	$reserva->registrarRervacionController();   
 }
 else if(isset($_GET['id'])){
-    $cliente -> editarClienteController();
+    $reserva -> editarReservacionController();
 }else{?>
 	<div class="box-content">
             <h4 class="box-title">Listado de Reservaciones</h4>
             <!-- /.box-title -->    
 			<div class="dropdown js__drop_down">
-            <a href="index.php?action=clientes&registrar" class="btn btn-info btn-xs waves-effect waves-light" title="Agregar" data-toggle="tooltip"><i class="fa fa-plus">Agregar Reservacion</i></a>
+            <a href="index.php?action=reservaciones&registrar" class="btn btn-info btn-xs waves-effect waves-light" title="Agregar" data-toggle="tooltip"><i class="fa fa-plus">Agregar Reservacion</i></a>
             </div>
             <table  id="example" class="table table-striped table-bordered display" style="width:100%;" >
                 <thead>

@@ -93,6 +93,9 @@
 	<script src="assets/plugin/datatables/extensions/Responsive/js/responsive.bootstrap.min.js"></script>
 	<script src="assets/scripts/datatables.demo.min.js"></script>
 
+            
+  <!-- Datepicker -->
+	<script src="assets/plugin/datepicker/js/bootstrap-datepicker.min.js"></script>
 	<script src="assets/scripts/main.min.js"></script>
 </body>
 </html>
