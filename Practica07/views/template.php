@@ -43,8 +43,7 @@
     
 <?php
 	session_start();
-
-  
+	
 	if(isset($_SESSION['validar']) and $_SESSION['validar']==true){
 		include "modules/navegacion.php";?>
 		<div id="wrapper">
