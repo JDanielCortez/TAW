@@ -25,21 +25,26 @@
 			<!-- /.title -->
 			<ul class="menu js__accordion">
 				<li class="current">
-					<a class="waves-effect" href="index.php"><i class="menu-icon fa fa-home"></i><span>Inicio</span></a>
-			</li>
-            <li class="current">
-					<a class="waves-effect" href="index.php?action=alumnos"><i class="menu-icon fa fa-user"></i><span>Alumnos</span></a>
-			</li>
+					<a class="waves-effect parent-item" href="index.php"><i class="menu-icon fa fa-home"></i><span>Inicio</span></a>
+				</li>
 				<li class="current">
-						<a class="waves-effect" href="index.php?action=maestros"><i class="menu-icon fa fa-briefcase"></i><span>Maestros</span></a>
+						<a class="waves-effect parent-item" href="index.php?action=alumnos"><i class="menu-icon fa fa-user"></i><span>Alumnos</span></a>
+						
+				</li>
+				<li class="current">
+						<a class="waves-effect parent-item  js__control" href="#"><i class="menu-icon fa fa-briefcase"></i><span>Maestros</span><span class="menu-arrow fa fa-angle-down"></span></a>
+						<ul class="sub-menu js__content">
+							<li><a href="index.php?action=maestros">Gestor Maestros</a></li>
+							<li><a href="index.php?action=tutorias">Tutorias</a></li>
+						</ul>
 				</li>
 
 				<li class="current">
-						<a class="waves-effect" href="index.php?action=materias"><i class="menu-icon fa fa-book"></i><span>Materias</span></a>
+						<a class="waves-effect parent-item" href="index.php?action=materias"><i class="menu-icon fa fa-book"></i><span>Materias</span></a>
 				</li>	
 				
 				<li class="current">
-						<a class="waves-effect" href="index.php?action=grupos"><i class="menu-icon fa fa-users"></i><span>Grupos</span></a>
+						<a class="waves-effect parent-item" href="index.php?action=grupos"><i class="menu-icon fa fa-users"></i><span>Grupos</span></a>
 				</li>		
 			</ul>
 	</div>

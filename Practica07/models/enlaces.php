@@ -6,6 +6,9 @@
             $enlacesModel == "maestros" ||
             $enlacesModel == "grupos" ||
             $enlacesModel == "materias" ||
+            $enlacesModel == "tutorias" ||
+            $enlacesModel == "registro_tutoria" ||
+            $enlacesModel == "editar_tutoria" ||
             $enlacesModel == "salir"){
                 $module = "views/modules/".$enlacesModel.".php";
             }

@@ -1337,5 +1337,340 @@
           }
   
       }
+
+
+       /******************************************************************************************************************
+      *TUTORIAS-----------------------------------------------------------------------------------------------------------
+      ******************************************************************************************************************/
+     
+
+      #REGISTRO TUTORIAS
+      #------------------------------------
+      #Genera la interfaz que muestra en una tabla todos los registros almacenados
+      public function vistaTutoriasController(){
+        if($_COOKIE['nivel']==1)
+          $respuesta = Datos::vistaTutoriasModel("sesion_tutoria");
+        else
+          $respuesta = Datos::vistaTutoriasNivelModel("sesion_tutoria",$_SESSION["num_empleado"]);		
+        foreach($respuesta as $row => $item){
+        echo'<tr>
+            <td>'.$item["id"].'</td>
+            <td>'.$item["fecha"].'</td>
+            <td>'.$item["hora"].'</td>
+            <td>'.$item["tema"].'</td>
+            <td>'.$item["tipo"].'</td>
+            <td><a href="index.php?action=editar_tutoria&id='.$item["id"].'"><button class="small warning">Editar</button></a></td>
+            <td><a href="index.php?action=tutorias&idBorrar='.$item["id"].'"><button class="small alert">Borrar</button></a></td>
+          </tr>';
+        }
+      }
+
+      #BORRAR TUTORIAS
+      #------------------------------------
+      #Permite el eliminado de las tutorais llamando el modelo
+      public function borrarTutoriaController(){
+
+        if(isset($_GET["idBorrar"])){
+          $datosController = $_GET["idBorrar"];
+          $respuesta = Datos::borrarAlumnosTutoriaModel($datosController, "sesion_alumnos");
+          $respuesta = Datos::borrarTutoriaModel($datosController, "sesion_tutoria");
+          
+          if($respuesta == "success"){
+            header("location:index.php?action=tutorias");
+          }
+        }
+      }
+  
+      #REGISTRAR TUTORIAS
+      #------------------------------------
+      #Permite el registro de una tutoria en la base de datos
+      public function registroTutoriaController(){	  
+        if(isset($_POST["fecha"])){
+          $datosController = array(
+                          "hora"=>$_POST["hora"],
+                          "fecha"=>$_POST["fecha"],
+                          "tema"=>$_POST["tema"],
+                          "tipo"=>$_POST["tipo"],
+                          "num_maestro"=>$_POST["num_maestro"]
+                      );
+
+          $respuesta = Datos::registroTutoriaModel($datosController, "sesion_tutoria");
+          
+          if(isset($_POST['hid'])){
+            $data = $_POST['hid'];
+
+            $id_sesion = Datos::ObtenerLastTutoria("sesion_tutoria");
+
+            $respuesta = Datos::registroAlumnosTutoriaModel($data, $id_sesion[0], "sesion_alumnos");
+            }
+            
+          if($respuesta == "success"){
+            header("location:index.php?action=tutorias&");
+          }
+          else{
+            header("location:index.php");
+          }
+        
+        }
+        
+      }
+  
+      #REGISTRO BASE DE TUTORIAS
+      #------------------------------------
+      #Genera la interfaz base para el registro de las tutorias
+      public function registroBaseTutoriaController(){
+        if($_COOKIE['nivel']==1){
+          $respuesta_alumnos = Datos::obtenerAlumnosModel("alumnos");}
+        else{
+          $respuesta_alumnos = Datos::obtenerAlumnosNivelModel("alumnos",$_SESSION['num_empleado']);}
+          
+        $st_alumnos="";
+        for($i=0;$i<sizeof($respuesta_alumnos);$i++)
+          $st_alumnos=$st_alumnos."<option value='".$respuesta_alumnos[$i]['matricula']."'>".$respuesta_alumnos[$i]['nombre']."</option>";
+
+          
+        echo'
+          <input type="hidden" id="hid" name="hid"></input>
+          <table>
+            <tr>
+              <td>
+                <h4>Detalles en la tutoria</h4>
+                <input type="hidden" name="num_maestro" value="'.$_SESSION['num_empleado'].'" required>
+                <label for="fecha">Fecha:</label>
+                <input type="date" name="fecha" required>
+                <label for="hora">Hora:</label>
+                <input type="time" name="hora" required>
+                <label for="tipo">Tipo:</label>
+                <select name="tipo" required>
+                  <option value="Grupal">Grupal</option>
+                  <option value="Individual">Individual</option>
+                </select>
+                <label for="Tema">Tema:</label>
+                <input type="text" name="tema" required>
+                <button class="small success" onclick="sendData();" type="submit">Registrar</button>
+                
+              </td>
+              <td>
+                <h4>Alumnos en la tutoria</h4>
+                <table>
+                  <tr>
+                    <td>
+                    <label for="alumno">Nombre del Alumno:</label>
+                    <select name="alumno" class="js-example-basic-multiple" id="alumno">
+                      '.$st_alumnos.'
+                    </select>
+                    <br><br>
+                  </td>
+                  <td>
+                    <button type="button" class="small success" onclick="addAlumno()">Agregar Alumno</button>
+                  </td>
+                </tr>
+                <table>
+                <table id="alumnos"></table>
+              </td>
+            </tr>
+          </table>';
+
+        echo'<script>
+            $(document).ready(function() {
+              $(".js-example-basic-multiple").select2();
+            });
+
+            var alumnos=[];
+            var send_alumnos=[];
+            var tab = document.getElementById("alumnos");
+
+            function updateTable(){
+              tab.innerHTML="<tr><th>Matricula</th><th>Nombre</th><th>¿Eliminar?</th><tr>";
+              for(var i=0;i<alumnos.length;i++){
+                tab.innerHTML=tab.innerHTML+"<tr><td>"+alumnos[i][0]+"</td><td>"+alumnos[i][1]+"</td><td><button class=\'alert\' type=\'button\' onclick=\'deleteAlumno("+i+");\'>Eliminar</button></td><tr>";
+              }
+            }
+
+            function addAlumno(){
+              
+              var select = document.getElementById("alumno");
+              var flag=false;
+              for(var i=0;i<alumnos.length;i++){
+                if(alumnos[i][0]==select.options[select.selectedIndex].value && alumnos[i][1]==select.options[select.selectedIndex].text){
+                  flag=true;
+                  break;
+                }
+              }
+
+              if(!flag){
+                alumnos.push([select.options[select.selectedIndex].value,select.options[select.selectedIndex].text]);
+                send_alumnos.push([select.options[select.selectedIndex].value]);
+                updateTable();						
+              }else{
+                alert("Alumno ya Agregado");
+              }
+            }
+
+            function deleteAlumno(index){
+              alumnos.splice(index, 1);
+              send_alumnos.splice(index, 1);
+              updateTable();
+            }
+
+            function sendData(){
+              var hid = document.getElementById("hid");
+              hid.value=send_alumnos;
+            }
+
+          </script>';
+      }
+
+      #EDICION DE TUTORIAS
+      #------------------------------------
+      #Se encarga de controlar la edicion de una tutoria
+      public function editarTutoriaController(){
+
+        $datosController = $_GET["id"];
+        $respuesta = Datos::editarTutoriaModel($datosController, "sesion_tutoria");
+        
+        $respuesta_alumnos = Datos::obtenerAlumnosModel("alumnos");
+        $respuesta_alumnosTutoria = Datos::obtenerAlumnosTutoriaModel($datosController,"sesion_alumnos");
+
+        $st_alumnos="";
+        for($i=0;$i<sizeof($respuesta_alumnos);$i++)
+          $st_alumnos=$st_alumnos."<option value='".$respuesta_alumnos[$i]['matricula']."'>".$respuesta_alumnos[$i]['nombre']."</option>";
+
+        echo'
+          <input type="hidden" id="hid" name="hid"></input>
+          <table>
+            <tr>
+              <td>
+                <h4>Detalles en la tutoria</h4>
+                <input type="hidden" value="'.$respuesta["num_maestro"].'" name="num_maestro">
+                <label for="fecha">Fecha:</label>
+                <input type="date" value="'.$respuesta["fecha"].'" name="fecha" required>
+                <label for="hora">Hora:</label>
+                <input type="time" value="'.$respuesta["hora"].'" name="hora" required>
+                <label for="tipo">Tipo:</label>
+                <select id="tipos" name="tipo" required>
+                  <option value="Grupal">Grupal</option>
+                  <option value="Individual">Individual</option>
+                </select>
+                <label for="tema">Tema:</label>
+                <input type="text" value="'.$respuesta["tema"].'" name="tema" required>
+                <button class="small success" onclick="sendData();" type="submit">Actualizar</button>
+              <td>
+                <h4>Alumnos en la tutoria</h4>
+                <table>
+                  <tr>
+                    <td>
+                    <label for="alumno">Nombre del Alumno:</label>
+                    <select name="alumno" class="js-example-basic-multiple" id="alumno">
+                      '.$st_alumnos.'
+                    </select>
+                    <br><br>
+                  </td>
+                  <td>
+                    <button type="button" class="small success" onclick="addAlumno()">Agregar Alumno</button>
+                  </td>
+                </tr>
+                <table>
+                <table id="alumnos"></table>
+              </td>
+            </tr>
+          </table>';
+
+        echo'
+        <script>
+          $("#tipos").val("'.$respuesta["tipo"].'");
+          $(document).ready(function() {
+            $(".js-example-basic-multiple").select2();
+            fillTable();
+          });
+
+          var alumnos=[];
+          var send_alumnos=[];
+          var tab = document.getElementById("alumnos");
+
+
+          function fillTable(){
+            var resp_at = '.json_encode($respuesta_alumnosTutoria).';
+            alumnos=resp_at;
+            for(var i=0;i<alumnos.length;i++){
+              send_alumnos[i]=alumnos[i][0];
+            }
+            updateTable();
+          }
+
+          function updateTable(){
+            tab.innerHTML="<tr><th>Matricula</th><th>Nombre</th><th>¿Eliminar?</th><tr>";
+            for(var i=0;i<alumnos.length;i++){
+              tab.innerHTML=tab.innerHTML+"<tr><td>"+alumnos[i][0]+"</td><td>"+alumnos[i][1]+"</td><td><button class=\'alert\' type=\'button\' onclick=\'deleteAlumno("+i+");\'>Eliminar</button></td><tr>";
+            }
+          }
+
+          function addAlumno(){
+            
+            var select = document.getElementById("alumno");
+            var flag=false;
+            for(var i=0;i<alumnos.length;i++){
+              if(alumnos[i][0]==select.options[select.selectedIndex].value && alumnos[i][1]==select.options[select.selectedIndex].text){
+                flag=true;
+                break;
+              }
+            }
+
+            if(!flag){
+              alumnos.push([select.options[select.selectedIndex].value,select.options[select.selectedIndex].text]);
+              send_alumnos.push([select.options[select.selectedIndex].value]);
+              updateTable();						
+            }else{
+              alert("Alumno ya Agregado");
+            }
+          }
+
+          function deleteAlumno(index){
+            alumnos.splice(index, 1);
+            send_alumnos.splice(index, 1);
+            updateTable();
+          }
+
+          function sendData(){
+            var hid = document.getElementById("hid");
+            hid.value=send_alumnos;
+          }
+        </script>';
+
+
+      }
+
+      #ACTUALIZAR TUTORIAS
+      #------------------------------------
+      #Permite la actualizacion de la tutoria, al registrarlo en lab base de datos, realiza una eliminacion
+      #completa de los alumnos para volver a realizar su insercion
+      public function actualizarTutoriaController(){
+        if(isset($_POST["hora"])){
+          $datosController = array( "id"=>$_GET["id"],
+                            "fecha"=>$_POST["fecha"],
+                                  "hora"=>$_POST["hora"],
+                                  "tipo"=>$_POST["tipo"],
+                                  "tema"=>$_POST["tema"]);
+
+          $respuesta = Datos::actualizarTutoriaModel($datosController, "sesion_tutoria");
+
+          $respuesta = Datos::borrarAlumnosTutoriaModel($_GET["id"], "sesion_alumnos");
+          
+          $data = $_POST['hid'];
+
+          $respuesta = Datos::registroAlumnosTutoriaModel($data, $_GET["id"], "sesion_alumnos");
+            
+          
+
+          if($respuesta == "success"){
+            header("location:index.php?action=cambio_tutoria");
+          }
+          else{
+            echo "error";
+          }
+        }
+      }
+
+
   }
 ?>

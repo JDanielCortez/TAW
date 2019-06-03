@@ -1,2 +1,2 @@
-usuario: admin
-contraseña admin
+usuario: superadmin@upv.edu.mx
+contraseña: superadmin

@@ -48,6 +48,28 @@
             return $stmt->fetchAll();
         }
 
+        #OBTENER ALUMNOS
+        #-------------------------------------
+        #Obtiene las alumnos de toda la tabla
+        public function obtenerAlumnosModel($tabla){
+            $stmt = Conexion::conectar()->prepare("SELECT matricula, nombre FROM $tabla");
+            $stmt->execute();
+
+            return $stmt->fetchAll();
+        }
+
+        #OBTENER ALUMNOS NIVEL
+        #-------------------------------------
+        #Obtiene los alumnos que tienen a cierto tutor
+        public function obtenerAlumnosNivelModel($tabla, $id){
+            $stmt = Conexion::conectar()->prepare("SELECT matricula, nombre FROM $tabla WHERE id_tutor=:id_tutor");
+            $stmt->bindParam(":id_tutor", $id, PDO::PARAM_INT);
+            $stmt->execute();
+
+            return $stmt->fetchAll();
+        }
+
+
         /******************************************************************************************************************
         *OBTENER MATERIAS POR CARRERA -------------------------------------------------------------------------------------
         ******************************************************************************************************************/
@@ -638,6 +660,177 @@
             $stmt->close();
     
         }
+
+        /******************************************************************************************************************
+         *TUTORIAS -------------------------------------------------------------------------------------------------------
+        ******************************************************************************************************************/
+       
+
+
+            #PERMITE REALIZAR UNA VISTA PARA TUTORIAS
+            #-------------------------------------
+            public function vistaTutoriasModel($tabla){
+
+                $stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla");	
+                $stmt->execute();
+
+                return $stmt->fetchAll();
+
+                $stmt->close();
+
+            }
+            
+            #VISTA DE LAS TUTORIAS POR NIVEL 
+            #-------------------------------------
+            #Muestra solo las tutorias que ha hecho el empleado, con el numero de maestro ingresado
+            public function vistaTutoriasNivelModel($tabla, $id){
+
+                $stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla where num_maestro=:num_maestro");	
+                $stmt->bindParam(":num_maestro", $id, PDO::PARAM_STR);
+                $stmt->execute();
+
+                return $stmt->fetchAll();
+
+                $stmt->close();
+
+            }
+
+            #BORRAR DE LAS TUTORIAS 
+            #-------------------------------------
+            public function borrarTutoriaModel($datosModel, $tabla){
+                $stmt = Conexion::conectar()->prepare("DELETE FROM $tabla WHERE id = :id");
+                $stmt->bindParam(":id", $datosModel, PDO::PARAM_INT);
+
+                if($stmt->execute())
+                    return "success";
+                else
+                    return "error";
+
+                $stmt->close();
+
+            }
+
+            #BORRAR ALUMNOS TUTORIAS 
+            #-------------------------------------
+            public function borrarAlumnosTutoriaModel($datosModel, $tabla){
+                $stmt = Conexion::conectar()->prepare("DELETE FROM $tabla WHERE id_sesion = :id");
+                $stmt->bindParam(":id", $datosModel, PDO::PARAM_INT);
+
+                if($stmt->execute())
+                    return "success";
+                else
+                    return "error";
+
+                $stmt->close();
+            }
+
+
+            #REGISTRO DE TUTORIAS
+            #-------------------------------------
+            public function registroTutoriaModel($datosModel, $tabla){
+
+                $stmt1 = Conexion::conectar()->prepare("INSERT INTO $tabla (fecha, hora, tipo, tema, num_maestro) VALUES (:fecha,:hora,:tipo,:tema,:num_maestro)");	
+                
+                $stmt1->bindParam(":fecha", $datosModel["fecha"], PDO::PARAM_STR);
+                $stmt1->bindParam(":hora", $datosModel["hora"], PDO::PARAM_STR);
+                $stmt1->bindParam(":tipo", $datosModel["tipo"], PDO::PARAM_STR);
+                $stmt1->bindParam(":tema", $datosModel["tema"], PDO::PARAM_STR);
+                $stmt1->bindParam(":num_maestro", $datosModel["num_maestro"], PDO::PARAM_STR);
+                
+                var_dump($datosModel);
+
+                if($stmt1->execute()){
+                    return "success";
+                }
+                else{
+                    return "error";
+                }
+
+                $stmt1->close();
+
+            }
+
+            #OBTENER ULTIMA TUTORIA
+            #-------------------------------------
+            public function ObtenerLastTutoria($tabla){
+                $stmt = Conexion::conectar()->prepare("SELECT max(id) FROM $tabla");
+                $stmt->execute();
+
+                return $stmt->fetch();
+
+                $stmt->close();
+            }
+
+            #REGISTRO DE LOS ALUMNOS
+            #-------------------------------------
+            public function registroAlumnosTutoriaModel($datosModel, $id_sesion, $tabla){
+                $datosModel_array =  explode(",",$datosModel);
+                
+                for($i=0;$i<sizeof($datosModel_array);$i++){
+                    $stmt1 = Conexion::conectar()->prepare("INSERT INTO $tabla (matricula_alumno, id_sesion) VALUES (:matricula_alumno,:id_sesion)");	
+                    $stmt1->bindParam(":matricula_alumno", $datosModel_array[$i], PDO::PARAM_STR);
+                    $stmt1->bindParam(":id_sesion", $id_sesion, PDO::PARAM_INT);
+
+                    if(!$stmt1->execute())
+                        return "error";
+
+                }
+                
+                return "success";		
+
+                $stmt1->close();
+
+            }
+
+            #EDICION DE LA INTERFAZ
+            #-------------------------------------
+            public function editarTutoriaModel($datosModel, $tabla){
+
+                $stmt = Conexion::conectar()->prepare("SELECT id, hora, fecha, tipo, tema, num_maestro FROM $tabla WHERE id = :id");
+                $stmt->bindParam(":id", $datosModel, PDO::PARAM_INT);	
+                $stmt->execute();
+
+                return $stmt->fetch();
+
+                $stmt->close();
+
+            }
+
+            #OBTENER LOS ALUMNOS DE LA TUTORIA
+            #-------------------------------------
+            public function obtenerAlumnosTutoriaModel($datosModel,$tabla){
+
+                $stmt = Conexion::conectar()->prepare("SELECT st.matricula_alumno, a.nombre FROM $tabla as st INNER JOIN alumnos AS a ON a.matricula=st.matricula_alumno WHERE st.id_sesion=:id_sesion");
+                $stmt->bindParam(":id_sesion", $datosModel, PDO::PARAM_INT);	
+                $stmt->execute();
+
+                return $stmt->fetchAll();
+
+                $stmt->close();
+            }
+
+            #ACTUALIZA EL TUTOR MUCHO MAS.
+            #-------------------------------------
+            public function actualizarTutoriaModel($datosModel, $tabla){
+            
+                $stmt = Conexion::conectar()->prepare("UPDATE $tabla SET fecha = :fecha, hora = :hora, tipo = :tipo, tema = :tema WHERE id = :id");
+
+                $stmt->bindParam(":fecha", $datosModel["fecha"], PDO::PARAM_STR);
+                $stmt->bindParam(":hora", $datosModel["hora"], PDO::PARAM_STR);
+                $stmt->bindParam(":tipo", $datosModel["tipo"], PDO::PARAM_STR);
+                $stmt->bindParam(":tema", $datosModel["tema"], PDO::PARAM_STR);
+                $stmt->bindParam(":id", $datosModel["id"], PDO::PARAM_INT);
+
+                if($stmt->execute())
+                    return "success";
+                else
+                    return "error";
+
+                $stmt->close();
+            }
+
+
+
 
 }
 ?>
