@@ -3,17 +3,17 @@
 		<div class="inside">
 			<div class="title"><strong>Gestor</strong>Escolar</div>
 			<!-- /.title -->
-			<div class="frm-title">Login</div>
+			<div class="frm-title">Acceder</div>
 			<!-- /.frm-title -->
-			<div class="frm-input"><input type="text" placeholder="Username" name="Username" class="frm-inp" value="<?php if(isset($_POST['Username'])) echo $_POST['Username'];?>"><i class="fa fa-user frm-ico"></i></div>
+			<div class="frm-input"><input type="email" placeholder="Nombre de Usuario" name="emailIngreso" class="frm-inp" value="<?php if(isset($_POST['emailIngreso'])){ echo $_POST['emailIngreso'];}?>"><i class="fa fa-user frm-ico"></i></div>
 			<!-- /.frm-input -->
-			<div class="frm-input"><input type="password" placeholder="Password" name="Password" class="frm-inp" ><i class="fa fa-lock frm-ico"></i></div>
+			<div class="frm-input"><input type="password" placeholder="Contraseña" name="passwordIngreso" class="frm-inp" ><i class="fa fa-lock frm-ico"></i>       </div>
 			<!-- /.frm-input -->
 			
 			<!-- /.clearfix -->
-			<button type="submit" class="frm-submit">Login<i class="fa fa-arrow-circle-right"></i></button>
+			<button type="submit" class="frm-submit">Acceder<i class="fa fa-arrow-circle-right"></i></button>
 			
-			<div class="frm-footer">NinjaAdmin © 2016.</div>
+			<div class="frm-footer">No es NinjaAdmin © 2016.</div>
 			<!-- /.footer -->
 		</div>
 		<!-- .inside -->

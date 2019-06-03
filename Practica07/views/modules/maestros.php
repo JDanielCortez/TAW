@@ -23,17 +23,21 @@
               <table  id="example" class="table table-striped table-bordered display" style="width:100%;" >
                   <thead>
                       <tr>
+                          <th>Num. Empleado</th>
                           <th>Nombre</th>
-                          <th>Correo</th>
-                          <th>Teléfono</th>
+                          <th>Email</th>
+                          <th>Carrera</th>
+                          <th>Nivel</th>
                           <th>Acciones</th>
                       </tr>
                   </thead>
                   <tfoot>
                       <tr>
+                        <th>Num. Empleado</th>
                           <th>Nombre</th>
-                          <th>Correo</th>
-                          <th>Teléfono</th>
+                          <th>Email</th>
+                          <th>Carrera</th>
+                          <th>Nivel</th>
                           <th>Acciones</th>
                       </tr>
                   </tfoot>

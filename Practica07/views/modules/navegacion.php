@@ -33,12 +33,14 @@
 				<li class="current">
 						<a class="waves-effect" href="index.php?action=maestros"><i class="menu-icon fa fa-briefcase"></i><span>Maestros</span></a>
 				</li>
-				<li class="current">
-						<a class="waves-effect" href="index.php?action=grupos"><i class="menu-icon fa fa-users"></i><span>Grupos</span></a>
-				</li>
+
 				<li class="current">
 						<a class="waves-effect" href="index.php?action=materias"><i class="menu-icon fa fa-book"></i><span>Materias</span></a>
-				</li>			
+				</li>	
+				
+				<li class="current">
+						<a class="waves-effect" href="index.php?action=grupos"><i class="menu-icon fa fa-users"></i><span>Grupos</span></a>
+				</li>		
 			</ul>
 	</div>
 		<!-- /.navigation -->
@@ -52,7 +54,7 @@ $resultado = "";
 <div class="fixed-navbar">
 	<div class="pull-left">
 		<button type="button" class="menu-mobile-button glyphicon glyphicon-menu-hamburger js__menu_mobile"></button>
-		<h1 class="page-title"><?php echo $resultado; if(isset($_GET['registrar'])){ echo ' / AGREGAR';} else if(isset($_GET['id'])) { echo ' / EDITAR';} ?></h1>
+		<h1 class="page-title"><?php echo $resultado; if(isset($_GET['registrar'])){ echo ' / AGREGAR';} else if(isset($_GET['ver'])) { echo ' / CONSULTAR';} else if(isset($_GET['id'])) { echo ' / EDITAR';} ?></h1>
 		<!-- /.page-title -->
 	</div>
 	<!-- /.pull-left -->

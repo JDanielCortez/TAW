@@ -6,6 +6,9 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 	<meta name="description" content="">
 	<meta name="author" content="">
+  
+  <link rel="shortcut icon" type="image/x-icon" href="img/eductaion-hat-school-icon-4-300x300.png" />
+
 
 	<title>Gestor Escolar</title>
 
@@ -24,9 +27,6 @@
 	<!-- Percent Circle -->
 	<link rel="stylesheet" href="assets/plugin/percircle/css/percircle.css">
 
-	<!-- Chartist Chart -->
-	<link rel="stylesheet" href="assets/plugin/chart/chartist/chartist.min.css">
-
 	<!-- FullCalendar -->
 	<link rel="stylesheet" href="assets/plugin/fullcalendar/fullcalendar.min.css">
 	<link rel="stylesheet" href="assets/plugin/fullcalendar/fullcalendar.print.css" media='print'>
@@ -34,6 +34,9 @@
 	<!-- Data Tables -->
 	<link rel="stylesheet" href="assets/plugin/datatables/media/css/dataTables.bootstrap.min.css">
 	<link rel="stylesheet" href="assets/plugin/datatables/extensions/Responsive/css/responsive.bootstrap.min.css">
+
+	<!-- Select2 -->
+	<link rel="stylesheet" href="assets/plugin/select2/css/select2.min.css">
 
 
 	<!-- Dark Themes -->
@@ -59,6 +62,10 @@
 	$mvc -> enlacesPaginasController();
 	
 	?>
+          </div>
+        </div>
+      </div>
+  </div>
 
     <!-- Placed at the end of the document so the pages load faster -->
 	<script src="assets/scripts/jquery.min.js"></script>
@@ -71,15 +78,6 @@
 	<!-- Full Screen Plugin -->
 	<script src="assets/plugin/fullscreen/jquery.fullscreen-min.js"></script>
 
-	<!-- Percent Circle -->
-	<script src="assets/plugin/percircle/js/percircle.js"></script>
-
-	<!-- Google Chart -->
-	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-
-	<!-- Chartist Chart -->
-	<script src="assets/plugin/chart/chartist/chartist.min.js"></script>
-	<script src="assets/scripts/chart.chartist.init.min.js"></script>
 
 	<!-- FullCalendar -->
 	<script src="assets/plugin/moment/moment.js"></script>
@@ -96,6 +94,10 @@
             
   <!-- Datepicker -->
 	<script src="assets/plugin/datepicker/js/bootstrap-datepicker.min.js"></script>
+
+	<!-- Select2 -->
+	<script src="assets/plugin/select2/js/select2.min.js"></script>
+
 	<script src="assets/scripts/main.min.js"></script>
 </body>
 </html>

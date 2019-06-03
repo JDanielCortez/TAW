@@ -25,8 +25,8 @@
                       <tr>
                           <th>Matricula</th>
                           <th>Nombre</th>
-                          <th>Correo</th>
-                          <th>Teléfono</th>
+                          <th>Carrera</th>
+                          <th>Tutor</th>
                           <th>Acciones</th>
                       </tr>
                   </thead>
@@ -34,8 +34,8 @@
                       <tr>
                           <th>Matricula</th>
                           <th>Nombre</th>
-                          <th>Correo</th>
-                          <th>Teléfono</th>
+                          <th>Carrera</th>
+                          <th>Tutor</th>
                           <th>Acciones</th>
                       </tr>
                   </tfoot>
