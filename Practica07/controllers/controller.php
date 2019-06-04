@@ -1511,7 +1511,7 @@
                     <td>
                         <div  class="margin-top-20" align="right">
                             <br><br>
-                            <button type="submit" class="btn btn-primary btn-sm waves-effect waves-light"  onclick="addAlumno()"">Agregar Alumno</button>
+                            <button type="button" class="btn btn-primary btn-sm waves-effect waves-light"  onclick="addAlumno()"">Agregar Alumno</button>
                         </div>
                     </td>
                   </tr>
@@ -1772,5 +1772,85 @@
       }
 
 
+        /******************************************************************************************************************
+      *REPORTES TUTORIAS -----------------------------------------------------------------------------------------------------
+      ******************************************************************************************************************/
+
+      #VISTA MAESTROS REPORTES
+      #------------------------------------
+      #Genera la tabla de los reportes de maestros
+      public function vistaReporteMaestrosController(){
+
+        $respuesta = Datos::vistaMaestrosModel("maestros");
+
+        foreach($respuesta as $row => $item){
+          $item["nivel"]=$item["nivel"]==1?"SuperAdmin":"Maestro";
+        echo'<tr>
+            <td>'.$item["num_empleado"].'</td>
+            <td>'.$item["nombre"].'</td>
+            <td>'.$item["email"].'</td>
+            <td>'.$item["nombre_carrera"].'</td>
+            <td>'.$item["nivel"].'</td>
+          </tr>';
+        }
+
+        echo'<script>
+            $(document).ready( function () {
+                $("#table_maestros").DataTable();
+            } );		
+          </script>';
+
+      }
+
+
+      #VISTA ALUMNOS REPORTES
+      #------------------------------------
+      #Genera la tabla de los reportes de alumnos
+      public function vistaReporteAlumnosController(){
+
+        $respuesta = Datos::vistaAlumnosModel("alumnos");
+
+        foreach($respuesta as $row => $item){
+        echo'<tr>
+            <td>'.$item["matricula"].'</td>
+            <td>'.$item["nombre"].'</td>
+            <td>'.$item["carrera"].'</td>
+            <td>'.$item["tutor"].'</td>
+          </tr>';
+        }
+
+
+        echo'<script>
+            $(document).ready( function () {
+                $("#table_alumnos").DataTable();
+            } );		
+          </script>';
+      }
+
+      #VISTA TUTORIAS REPORTES
+      #------------------------------------
+      #Genera la tabla de los reportes de tutorias
+      public function vistaReporteTutoriasController(){
+        if($_COOKIE['nivel']==1)
+          $respuesta = Datos::vistaTutoriasModel("sesion_tutoria");
+        else
+          $respuesta = Datos::vistaTutoriasNivelModel("sesion_tutoria",$_SESSION["num_empleado"]);		
+        foreach($respuesta as $row => $item){
+        echo'<tr>
+            <td>'.$item["id"].'</td>
+            <td>'.$item["fecha"].'</td>
+            <td>'.$item["hora"].'</td>
+            <td>'.$item["tema"].'</td>
+            <td>'.$item["tipo"].'</td>
+          </tr>';
+        }
+
+
+        echo'<script>
+            $(document).ready( function () {
+                $("#table_tutorias").DataTable();
+            } );		
+          </script>';
+      }
   }
 ?>

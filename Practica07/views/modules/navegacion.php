@@ -34,6 +34,7 @@
 						<ul class="sub-menu js__content">
 							<li><a href="index.php?action=maestros">Gestor Maestros</a></li>
 							<li><a href="index.php?action=tutorias">Tutorias</a></li>
+							<li><a href="index.php?action=reportes">Reportes</a></li>
 						</ul>
 				</li>
 

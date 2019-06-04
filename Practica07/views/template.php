@@ -61,7 +61,7 @@
 	<script src="./views/js/vendor/jquery.js"></script>
   <script src="./views/js/vendor/modernizr.js"></script>
 	<script src="./views/js/select2.min.js"></script>
-	<script type="text/javascript" src="./views/js/datatables/datatables.min.js"></script>
+	<!-- <script type="text/javascript" src="./views/js/datatables/datatables.min.js"></script> -->
 
 
     

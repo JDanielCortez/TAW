@@ -9,6 +9,7 @@
             $enlacesModel == "tutorias" ||
             $enlacesModel == "registro_tutoria" ||
             $enlacesModel == "editar_tutoria" ||
+            $enlacesModel == "reportes" ||
             $enlacesModel == "salir"){
                 $module = "views/modules/".$enlacesModel.".php";
             }
