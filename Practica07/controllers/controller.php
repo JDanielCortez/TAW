@@ -1591,40 +1591,79 @@
 
         echo'
           <input type="hidden" id="hid" name="hid"></input>
-          <table>
+          <table  class="col-xs-12">
             <tr>
-              <td>
-                <h4>Detalles en la tutoria</h4>
-                <input type="hidden" value="'.$respuesta["num_maestro"].'" name="num_maestro">
-                <label for="fecha">Fecha:</label>
-                <input type="date" value="'.$respuesta["fecha"].'" name="fecha" required>
-                <label for="hora">Hora:</label>
-                <input type="time" value="'.$respuesta["hora"].'" name="hora" required>
-                <label for="tipo">Tipo:</label>
-                <select id="tipos" name="tipo" required>
-                  <option value="Grupal">Grupal</option>
-                  <option value="Individual">Individual</option>
-                </select>
-                <label for="tema">Tema:</label>
-                <input type="text" value="'.$respuesta["tema"].'" name="tema" required>
-                <button class="small success" onclick="sendData();" type="submit">Actualizar</button>
-              <td>
-                <h4>Alumnos en la tutoria</h4>
-                <table>
-                  <tr>
-                    <td>
-                    <label for="alumno">Nombre del Alumno:</label>
-                    <select name="alumno" class="js-example-basic-multiple" id="alumno">
-                      '.$st_alumnos.'
-                    </select>
-                    <br><br>
+              <td class="col-xs-4">
+                <h4 class="box-title">Detalles en la tutoria</h4>
+                <div class="card-content col-xs-12">
+                  <input type="hidden" value="'.$respuesta["num_maestro"].'" name="num_maestro">
+
+                  <div>
+                      <label class="control-label">Fecha:</label>
+                        <div class="input-group">
+                          <input type="date" class="form-control" placeholder="mm/dd/yyyy" id="datepicker"  name="fecha"  value="'.$respuesta["fecha"].'">
+                          <span class="input-group-addon bg-primary text-white"><i class="fa fa-calendar"></i></span>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="control-label">Hora:</label>
+                        <div class="input-group">
+                          <div class="bootstrap-timepicker">
+                            <input id="timepicker" type="time" class="form-control" name="hora" required value="'.$respuesta["hora"].'" >
+                          </div>
+                          <span class="input-group-addon bg-primary b-0 text-white"><i class="glyphicon glyphicon-time"></i></span>
+                        </div>
+                      </div>
+
+                      <div class="form-group has-inverse">
+                          <label>Tipo</label>
+                          <select class="form-control select2_1" name="tipo" id="tipos" required>
+                              <option value="Grupal">Grupal</option>
+                              <option value="Individual">Individual</option>
+                          </select>
+                      </div>
+
+
+                      <div>
+                          <label >Tema</label>
+                          <div class="form-with-icon has-inverse">
+                            <input type="text" class="form-control"  name="tema" required  value="'.$respuesta["tema"].'">
+                            <i class="fa fa-book item-icon item-icon-right"></i>
+                          </div>
+                        </div>
+
+                        <div  class="col-xs-12 margin-top-10" align="right">
+                            <button type="submit" class="btn btn-primary btn-sm waves-effect waves-light"  onclick="sendData();">Actualizar</button>
+                        </div>
                   </td>
-                  <td>
-                    <button type="button" class="small success" onclick="addAlumno()">Agregar Alumno</button>
-                  </td>
-                </tr>
-                <table>
-                <table id="alumnos"></table>
+                <td class="col-xs-6">
+                  <h4 class="box-title">Alumnos en la tutoria</h4>
+                  <div class="card-content col-xs-12">
+                    <table class="col-xs-12">
+                      <tr>
+                        <td>
+
+                            <div class="form-group has-inverse">
+                                <label>Nombre del Alumno</label>
+                                <select name="alumno" class="form-control select2_1" id="alumno">
+                                    '.$st_alumnos.'
+                                </select>
+                            </div>
+                            
+                        <br><br>
+                      </td>
+                      <td>
+                        <div  class="margin-top-20" align="right">
+                            <br><br>
+                            <button type="button" class="btn btn-primary btn-sm waves-effect waves-light"  onclick="addAlumno()"">Agregar Alumno</button>
+                        </div>
+
+                      </td>
+                    </tr>
+                    <table>
+                    <table id="alumnos"  class="table table-striped table-bordered display col-xs-12"></table>
+                    </div>
               </td>
             </tr>
           </table>';
@@ -1654,7 +1693,7 @@
           function updateTable(){
             tab.innerHTML="<tr><th>Matricula</th><th>Nombre</th><th>¿Eliminar?</th><tr>";
             for(var i=0;i<alumnos.length;i++){
-              tab.innerHTML=tab.innerHTML+"<tr><td>"+alumnos[i][0]+"</td><td>"+alumnos[i][1]+"</td><td><button class=\'alert\' type=\'button\' onclick=\'deleteAlumno("+i+");\'>Eliminar</button></td><tr>";
+              tab.innerHTML=tab.innerHTML+"<tr><td>"+alumnos[i][0]+"</td><td>"+alumnos[i][1]+"</td><td><a class=\'danger\' title=\'Eliminar\' data-toggle=\'tooltip\' onclick=\'deleteAlumno("+i+");\'><i class=\'fa fa-trash\'></i></a></td><tr>";
             }
           }
 

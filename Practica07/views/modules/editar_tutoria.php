@@ -13,7 +13,7 @@ if(!$_SESSION["validar"]){
 ?>
 
 
-<form method="post">
+<form method="post" class="box-content card white col-xs-12">
 	
 	<?php
 
