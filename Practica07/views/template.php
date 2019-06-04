@@ -38,11 +38,21 @@
 	<!-- Select2 -->
 	<link rel="stylesheet" href="assets/plugin/select2/css/select2.min.css">
 
+	<!-- Colorpicker -->
+	<link rel="stylesheet" href="assets/plugin/colorpicker/css/bootstrap-colorpicker.min.css">
+
+<!-- Datepicker -->
+<link rel="stylesheet" href="assets/plugin/datepicker/css/bootstrap-datepicker.min.css">
+
+
+	<!-- Timepicker -->
+	<link rel="stylesheet" href="assets/plugin/timepicker/bootstrap-timepicker.min.css">
+
 
 	<!-- Dark Themes -->
-	<link rel="stylesheet" href="assets/styles/style-dark.min.css">
+	<!-- <link rel="stylesheet" href="assets/styles/style-dark.min.css"> -->
 	
-	<link rel="stylesheet" href="./views/css/foundation.css" />
+	<!-- <link rel="stylesheet" href="./views/css/foundation.css" /> -->
 	<link href="./views/css/select2.min.css" rel="stylesheet" />
 	<link rel="stylesheet" type="text/css" href="./views/css/datatables.min.css"/>
 
@@ -56,71 +66,6 @@
 
     
 	<style>
-
-		nav{
-			position:relative;
-			margin:auto;
-			width:100%;
-			height:auto;
-			background:black;
-		}
-
-		nav ul{
-			position:relative;
-			margin:auto;
-			width:50%;
-			text-align: center;
-		}
-
-		nav ul li{
-			display:inline-block;
-			width:24%;
-			line-height: 50px;
-			list-style: none;
-		}
-
-		nav ul li a{
-			color:white;
-			text-decoration: none;
-		}
-
-		section{
-			position: center;
-			margin: auto;
-			width:65%;
-		}
-
-		section h1{
-			position: relative;
-			margin: auto;
-			padding:10px;
-			text-align: center;
-		}
-
-		section form{
-			position:relative;
-			margin:auto;
-			width:100%;
-		}
-
-		section form input{
-			display:inline-block;
-			padding:10px;
-			width:95%;
-			margin:5px;
-		}
-
-		section form input[type="submit"]{
-			position:relative;
-			margin:20px auto;
-			left:4.5%;
-
-		}
-
-		table{
-			width:100%;
-		}
-
 		td {
 		  vertical-align: baseline;
 		}
@@ -181,6 +126,10 @@
             
   <!-- Datepicker -->
 	<script src="assets/plugin/datepicker/js/bootstrap-datepicker.min.js"></script>
+
+	<!-- Timepicker -->
+	<script src="assets/plugin/timepicker/bootstrap-timepicker.min.js"></script>
+
 
 	<!-- Select2 -->
 	<script src="assets/plugin/select2/js/select2.min.js"></script>

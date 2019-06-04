@@ -352,7 +352,7 @@
                       <label>Numero de Empleado</label>
                       <div class="form-with-icon">
                         <input type="text" class="form-control" placeholder="Ingrese numero..." name="numeroEmpleado" required>
-                        <i class="fa fa-user item-icon item-icon-right"></i>
+                        <i class="fa fa-hashtag item-icon item-icon-right"></i>
                       </div>
                     </div>
 
@@ -473,7 +473,7 @@
                       <label>Numero de Empleado</label>
                       <div class="form-with-icon">
                         <input type="text" class="form-control" placeholder="Ingrese numero..." name="" required disabled value="<?php echo $respuesta['num_empleado']; ?>">
-                        <i class="fa fa-user item-icon item-icon-right"></i>
+                        <i class="fa fa-hashtag item-icon item-icon-right"></i>
                       </div>
                     </div>
 
@@ -1169,7 +1169,7 @@
                   <div class="form-group has-inverse col-xs-12">
                     <label >Nombre</label>
                     <div class="form-with-icon">
-                      <input type="text" class="form-control" placeholder="Ingrese nombre de materia..." name="nombreGrupo" required>
+                      <input type="text" class="form-control" placeholder="Ingrese nombre de grupo..." name="nombreGrupo" required>
                       <i class="fa fa-users item-icon item-icon-right"></i>
                     </div>
                   </div>
@@ -1256,7 +1256,7 @@
 
                     <label >Nombre</label>
                     <div class="form-with-icon">
-                      <input type="text" class="form-control" placeholder="Ingrese nombre de materia..." name="nombreGrupoEditar" required value="<?php echo $respuesta['nombre'] ?>">
+                      <input type="text" class="form-control" placeholder="Ingrese nombre de grupo..." name="nombreGrupoEditar" required value="<?php echo $respuesta['nombre'] ?>">
                       <i class="fa fa-users item-icon item-icon-right"></i>
                     </div>
                   </div>
@@ -1359,8 +1359,10 @@
             <td>'.$item["hora"].'</td>
             <td>'.$item["tema"].'</td>
             <td>'.$item["tipo"].'</td>
-            <td><a href="index.php?action=editar_tutoria&id='.$item["id"].'"><button class="small warning">Editar</button></a></td>
-            <td><a href="index.php?action=tutorias&idBorrar='.$item["id"].'"><button class="small alert">Borrar</button></a></td>
+            <td>
+              <a href="index.php?action=editar_tutoria&id='.$item["id"].'" class="edit" title="Editar" data-toggle="tooltip"><i class="fa fa-edit"></i></a>
+              <a href="index.php?action=tutorias&idBorrar='.$item["id"].'" class="danger" title="Eliminar" data-toggle="tooltip"><i class="fa fa-trash"></i></a> 
+            </td>
           </tr>';
         }
       }
@@ -1376,7 +1378,12 @@
           $respuesta = Datos::borrarTutoriaModel($datosController, "sesion_tutoria");
           
           if($respuesta == "success"){
-            header("location:index.php?action=tutorias");
+            //header("location:index.php?action=tutorias");
+            echo '
+              <script>
+                window.location.href = "index.php?action=tutorias";
+              </script>
+            ';
           }
         }
       }
@@ -1402,13 +1409,21 @@
             $id_sesion = Datos::ObtenerLastTutoria("sesion_tutoria");
 
             $respuesta = Datos::registroAlumnosTutoriaModel($data, $id_sesion[0], "sesion_alumnos");
-            }
+          }
             
           if($respuesta == "success"){
-            header("location:index.php?action=tutorias&");
+            echo '
+            <script>
+              window.location.href = "index.php?action=tutorias";
+            </script>
+          '; 
           }
           else{
-            header("location:index.php");
+            echo '
+            <script>
+              window.location.href = "index.php";
+            </script>
+          ';
           }
         
         }
@@ -1431,46 +1446,82 @@
           
         echo'
           <input type="hidden" id="hid" name="hid"></input>
-          <table>
+          <table class="col-xs-12">
             <tr>
-              <td>
-                <h4>Detalles en la tutoria</h4>
-                <input type="hidden" name="num_maestro" value="'.$_SESSION['num_empleado'].'" required>
-                <label for="fecha">Fecha:</label>
-                <input type="date" name="fecha" required>
-                <label for="hora">Hora:</label>
-                <input type="time" name="hora" required>
-                <label for="tipo">Tipo:</label>
-                <select name="tipo" required>
-                  <option value="Grupal">Grupal</option>
-                  <option value="Individual">Individual</option>
-                </select>
-                <label for="Tema">Tema:</label>
-                <input type="text" name="tema" required>
-                <button class="small success" onclick="sendData();" type="submit">Registrar</button>
-                
+              <td class="col-xs-4">
+                <h4 class="box-title">Detalles en la tutoria</h4>
+                <div class="card-content col-xs-12">
+                  <input type="hidden" name="num_maestro" value="'.$_SESSION['num_empleado'].'" required>
+                  
+                  <div>
+                    <label class="control-label">Fecha:</label>
+                      <div class="input-group">
+                        <input type="date" class="form-control" placeholder="mm/dd/yyyy" id="datepicker"  name="fecha">
+                        <span class="input-group-addon bg-primary text-white"><i class="fa fa-calendar"></i></span>
+                      </div>
+                  </div>
+
+                  <div>
+                    <label class="control-label">Hora:</label>
+                    <div class="input-group">
+                      <div class="bootstrap-timepicker">
+                        <input id="timepicker" type="time" class="form-control" name="hora" required>
+                      </div>
+                      <span class="input-group-addon bg-primary b-0 text-white"><i class="glyphicon glyphicon-time"></i></span>
+                    </div>
+                  </div>
+
+                  <div class="form-group has-inverse">
+                      <label>Tipo</label>
+                      <select class="form-control select2_1" name="tipo" required>
+                          <option value="Grupal">Grupal</option>
+                          <option value="Individual">Individual</option>
+                      </select>
+                  </div>
+
+                  <div>
+                    <label >Tema</label>
+                    <div class="form-with-icon has-inverse">
+                      <input type="text" class="form-control"  name="tema" required>
+                      <i class="fa fa-book item-icon item-icon-right"></i>
+                    </div>
+                  </div>
+
+                  <div  class="col-xs-12 margin-top-10" align="right">
+                      <button type="submit" class="btn btn-primary btn-sm waves-effect waves-light"  onclick="sendData();">Registrar</button>
+                  </div>
+
+                </div>
               </td>
-              <td>
-                <h4>Alumnos en la tutoria</h4>
-                <table>
-                  <tr>
+              <td class="col-xs-6">
+                <h4 class="box-title">Alumnos en la tutoria</h4>
+                <div class="card-content col-xs-12">
+                  <table class="col-xs-12">
+                    <tr>
+                      <td>
+                      <div class="form-group has-inverse">
+                          <label>Nombre del Alumno</label>
+                          <select name="alumno" class="form-control select2_1" id="alumno">
+                              '.$st_alumnos.'
+                          </select>
+                      </div>
+
+                      <br><br>
+                    </td>
                     <td>
-                    <label for="alumno">Nombre del Alumno:</label>
-                    <select name="alumno" class="js-example-basic-multiple" id="alumno">
-                      '.$st_alumnos.'
-                    </select>
-                    <br><br>
-                  </td>
-                  <td>
-                    <button type="button" class="small success" onclick="addAlumno()">Agregar Alumno</button>
-                  </td>
-                </tr>
-                <table>
-                <table id="alumnos"></table>
+                        <div  class="margin-top-20" align="right">
+                            <br><br>
+                            <button type="submit" class="btn btn-primary btn-sm waves-effect waves-light"  onclick="addAlumno()"">Agregar Alumno</button>
+                        </div>
+                    </td>
+                  </tr>
+                  <table>
+                  <table id="alumnos" class="table table-striped table-bordered display col-xs-12"></table>
+                </div>
               </td>
             </tr>
           </table>';
-
+          
         echo'<script>
             $(document).ready(function() {
               $(".js-example-basic-multiple").select2();
@@ -1483,9 +1534,11 @@
             function updateTable(){
               tab.innerHTML="<tr><th>Matricula</th><th>Nombre</th><th>¿Eliminar?</th><tr>";
               for(var i=0;i<alumnos.length;i++){
-                tab.innerHTML=tab.innerHTML+"<tr><td>"+alumnos[i][0]+"</td><td>"+alumnos[i][1]+"</td><td><button class=\'alert\' type=\'button\' onclick=\'deleteAlumno("+i+");\'>Eliminar</button></td><tr>";
+                tab.innerHTML=tab.innerHTML+"<tr><td>"+alumnos[i][0]+"</td><td>"+alumnos[i][1]+"</td><td><a class=\'danger\' title=\'Eliminar\' data-toggle=\'tooltip\' onclick=\'deleteAlumno("+i+");\'><i class=\'fa fa-trash\'></i></a></td><tr>";
               }
             }
+
+            
 
             function addAlumno(){
               
@@ -1663,10 +1716,18 @@
           
 
           if($respuesta == "success"){
-            header("location:index.php?action=cambio_tutoria");
+            echo '
+            <script>
+              window.location.href = "index.php?action=tutorias";
+            </script>
+          '; 
           }
           else{
-            echo "error";
+            echo '
+            <script>
+              window.location.href = "index.php";
+            </script>
+          ';
           }
         }
       }

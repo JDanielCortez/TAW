@@ -12,7 +12,6 @@ if(!$_SESSION["validar"]){
 
 ?>
 
-<h1>EDITAR TUTORIA</h1>
 
 <form method="post">
 	

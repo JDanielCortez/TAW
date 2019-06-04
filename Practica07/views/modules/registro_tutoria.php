@@ -1,4 +1,4 @@
-<h1>REGISTRO DE TUTORIA</h1>
+
 <?php
 if(!isset($_SESSION['validar'])){
 	header("location:index.php?action=login");
@@ -7,7 +7,7 @@ if(!isset($_SESSION['validar'])){
 
 ?>
 
-<form id="tutoriaForm" method="post">
+<form id="tutoriaForm" method="post" class="box-content card white col-xs-12">
 	<?php
 	
 		$registro = new MvcController();

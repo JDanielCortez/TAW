@@ -737,7 +737,7 @@
                 $stmt1->bindParam(":tema", $datosModel["tema"], PDO::PARAM_STR);
                 $stmt1->bindParam(":num_maestro", $datosModel["num_maestro"], PDO::PARAM_STR);
                 
-                var_dump($datosModel);
+                //var_dump($datosModel);
 
                 if($stmt1->execute()){
                     return "success";

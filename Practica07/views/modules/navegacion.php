@@ -20,13 +20,11 @@
 	</header>
 	<!-- /.header -->
 	<div class="content">
-    <div class="navigation">
+    	<div class="navigation">
 			<h5 class="title">Menú</h5>
 			<!-- /.title -->
 			<ul class="menu js__accordion">
-				<li class="current">
-					<a class="waves-effect parent-item" href="index.php"><i class="menu-icon fa fa-home"></i><span>Inicio</span></a>
-				</li>
+				
 				<li class="current">
 						<a class="waves-effect parent-item" href="index.php?action=alumnos"><i class="menu-icon fa fa-user"></i><span>Alumnos</span></a>
 						
@@ -47,7 +45,7 @@
 						<a class="waves-effect parent-item" href="index.php?action=grupos"><i class="menu-icon fa fa-users"></i><span>Grupos</span></a>
 				</li>		
 			</ul>
-	</div>
+		</div>
 		<!-- /.navigation -->
 	</div>
 	<!-- /.content -->

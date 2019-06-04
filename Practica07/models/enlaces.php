@@ -13,10 +13,10 @@
                 $module = "views/modules/".$enlacesModel.".php";
             }
             else if($enlacesModel == "index"){
-                $module = "views/modules/inicio.php";
+                $module = "views/modules/alumnos.php";
             }
             else{
-                $module = "views/modules/inicio.php";
+                $module = "views/modules/alumnos.php";
             }
 
             return $module;
