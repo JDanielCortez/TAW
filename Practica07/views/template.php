@@ -13,48 +13,48 @@
 	<title>Gestor Escolar</title>
 
 	<!-- Main Styles -->
-	<link rel="stylesheet" href="assets/styles/style.min.css">
+	<link rel="stylesheet" href="views/assets/styles/style.min.css">
 
 	<!-- mCustomScrollbar -->
-	<link rel="stylesheet" href="assets/plugin/mCustomScrollbar/jquery.mCustomScrollbar.min.css">
+	<link rel="stylesheet" href="views/assets/plugin/mCustomScrollbar/jquery.mCustomScrollbar.min.css">
 
 	<!-- Waves Effect -->
-	<link rel="stylesheet" href="assets/plugin/waves/waves.min.css">
+	<link rel="stylesheet" href="views/assets/plugin/waves/waves.min.css">
 
 	<!-- Sweet Alert -->
-	<link rel="stylesheet" href="assets/plugin/sweet-alert/sweetalert.css">
+	<link rel="stylesheet" href="views/assets/plugin/sweet-alert/sweetalert.css">
 	
 	<!-- Percent Circle -->
-	<link rel="stylesheet" href="assets/plugin/percircle/css/percircle.css">
+	<link rel="stylesheet" href="views/assets/plugin/percircle/css/percircle.css">
 
 	<!-- FullCalendar -->
-	<link rel="stylesheet" href="assets/plugin/fullcalendar/fullcalendar.min.css">
-	<link rel="stylesheet" href="assets/plugin/fullcalendar/fullcalendar.print.css" media='print'>
+	<link rel="stylesheet" href="views/assets/plugin/fullcalendar/fullcalendar.min.css">
+	<link rel="stylesheet" href="views/assets/plugin/fullcalendar/fullcalendar.print.css" media='print'>
 
 	<!-- Data Tables -->
-	<link rel="stylesheet" href="assets/plugin/datatables/media/css/dataTables.bootstrap.min.css">
-	<link rel="stylesheet" href="assets/plugin/datatables/extensions/Responsive/css/responsive.bootstrap.min.css">
+	<link rel="stylesheet" href="views/assets/plugin/datatables/media/css/dataTables.bootstrap.min.css">
+	<link rel="stylesheet" href="views/assets/plugin/datatables/extensions/Responsive/css/responsive.bootstrap.min.css">
 
 	<!-- Select2 -->
-	<link rel="stylesheet" href="assets/plugin/select2/css/select2.min.css">
+	<link rel="stylesheet" href="views/assets/plugin/select2/css/select2.min.css">
 
 	<!-- Colorpicker -->
-	<link rel="stylesheet" href="assets/plugin/colorpicker/css/bootstrap-colorpicker.min.css">
+	<link rel="stylesheet" href="views/assets/plugin/colorpicker/css/bootstrap-colorpicker.min.css">
 
 <!-- Datepicker -->
-<link rel="stylesheet" href="assets/plugin/datepicker/css/bootstrap-datepicker.min.css">
+<link rel="stylesheet" href="views/assets/plugin/datepicker/css/bootstrap-datepicker.min.css">
 
 
 	<!-- Timepicker -->
-	<link rel="stylesheet" href="assets/plugin/timepicker/bootstrap-timepicker.min.css">
+	<link rel="stylesheet" href="views/assets/plugin/timepicker/bootstrap-timepicker.min.css">
 
 
 	<!-- Dark Themes -->
-	<!-- <link rel="stylesheet" href="assets/styles/style-dark.min.css"> -->
+	<!-- <link rel="stylesheet" href="views/assets/styles/style-dark.min.css"> -->
 	
 	<!-- <link rel="stylesheet" href="./views/css/foundation.css" /> -->
 	<link href="./views/css/select2.min.css" rel="stylesheet" />
-	<link rel="stylesheet" type="text/css" href="./views/css/datatables.min.css"/>
+	<!-- <link rel="stylesheet" type="text/css" href="./views/css/datatables.min.css"/> -->
 
 	
 	
@@ -100,41 +100,41 @@
   </div>
 
     <!-- Placed at the end of the document so the pages load faster -->
-	<script src="assets/scripts/jquery.min.js"></script>
-	<script src="assets/scripts/modernizr.min.js"></script>
-	<script src="assets/plugin/bootstrap/js/bootstrap.min.js"></script>
-	<script src="assets/plugin/mCustomScrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
-	<script src="assets/plugin/nprogress/nprogress.js"></script>
-	<script src="assets/plugin/sweet-alert/sweetalert.min.js"></script>
-	<script src="assets/plugin/waves/waves.min.js"></script>
+	<script src="views/assets/scripts/jquery.min.js"></script>
+	<script src="views/assets/scripts/modernizr.min.js"></script>
+	<script src="views/assets/plugin/bootstrap/js/bootstrap.min.js"></script>
+	<script src="views/assets/plugin/mCustomScrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+	<script src="views/assets/plugin/nprogress/nprogress.js"></script>
+	<script src="views/assets/plugin/sweet-alert/sweetalert.min.js"></script>
+	<script src="views/assets/plugin/waves/waves.min.js"></script>
 	<!-- Full Screen Plugin -->
-	<script src="assets/plugin/fullscreen/jquery.fullscreen-min.js"></script>
+	<script src="views/assets/plugin/fullscreen/jquery.fullscreen-min.js"></script>
 
 
 	<!-- FullCalendar -->
-	<script src="assets/plugin/moment/moment.js"></script>
-	<script src="assets/plugin/fullcalendar/fullcalendar.min.js"></script>
-	<script src="assets/scripts/fullcalendar.init.js"></script>
+	<script src="views/assets/plugin/moment/moment.js"></script>
+	<script src="views/assets/plugin/fullcalendar/fullcalendar.min.js"></script>
+	<script src="views/assets/scripts/fullcalendar.init.js"></script>
 
 	<!-- Data Tables -->
-	<script src="assets/plugin/datatables/media/js/jquery.dataTables.min.js"></script>
-	<script src="assets/plugin/datatables/media/js/dataTables.bootstrap.min.js"></script>
-	<script src="assets/plugin/datatables/extensions/Responsive/js/dataTables.responsive.min.js"></script>
-	<script src="assets/plugin/datatables/extensions/Responsive/js/responsive.bootstrap.min.js"></script>
-	<script src="assets/scripts/datatables.demo.min.js"></script>
+	<script src="views/assets/plugin/datatables/media/js/jquery.dataTables.min.js"></script>
+	<script src="views/assets/plugin/datatables/media/js/dataTables.bootstrap.min.js"></script>
+	<script src="views/assets/plugin/datatables/extensions/Responsive/js/dataTables.responsive.min.js"></script>
+	<script src="views/assets/plugin/datatables/extensions/Responsive/js/responsive.bootstrap.min.js"></script>
+	<script src="views/assets/scripts/datatables.demo.min.js"></script>
 
             
   <!-- Datepicker -->
-	<script src="assets/plugin/datepicker/js/bootstrap-datepicker.min.js"></script>
+	<script src="views/assets/plugin/datepicker/js/bootstrap-datepicker.min.js"></script>
 
 	<!-- Timepicker -->
-	<script src="assets/plugin/timepicker/bootstrap-timepicker.min.js"></script>
+	<script src="views/assets/plugin/timepicker/bootstrap-timepicker.min.js"></script>
 
 
 	<!-- Select2 -->
-	<script src="assets/plugin/select2/js/select2.min.js"></script>
+	<script src="views/assets/plugin/select2/js/select2.min.js"></script>
 
-	<script src="assets/scripts/main.min.js"></script>
+	<script src="views/assets/scripts/main.min.js"></script>
 </body>
 <script>
 	$(document).ready( function () {

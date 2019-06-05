@@ -54,7 +54,6 @@
 
 $resultado = "";
 <?php if(isset($_GET['action'])){ $resultado = strtoupper($_GET['action']);}else{ $resultado = 'INICIO';} ?>
-<?php if($_GET['action'] == 'salir'){ header('location: index.php?action=login');	 } ?>
 <?php if($_GET['action'] == 'registro_tutoria'){ $resultado = "TURORIAS / REGISTRO"; } ?>
 <?php if($_GET['action'] == 'editar_tutoria'){ $resultado = "TURORIAS"; } ?>
 <div class="fixed-navbar">
