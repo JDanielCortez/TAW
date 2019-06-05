@@ -10,8 +10,11 @@
   $alumno -> borrarAlumnoController();
   if(isset($_GET['registrar'])){
     $alumno ->registrarAlumnoController();   
-  }
-  else if(isset($_GET['id'])){
+  }else if(isset($_GET['ver'])){
+    $alumno -> bajaAlumnoMateriaController();
+    $alumno -> altaAlumnoMateriaController();
+    $alumno -> consultarAlumnoController();
+  }else if(isset($_GET['id'])){
       $alumno -> editarAlumnoController();
   }else{?>
   <div class="box-content">

@@ -58,6 +58,7 @@
                     <td>'.$item["carrera"].'</td>
                     <td>'.$item["tutor"].'</td>
                     <td>
+                        <a href="index.php?action=alumnos&ver=1&id='.$item["matricula"].'" class="edit" title="Consultar" data-toggle="tooltip"><i class="fa fa-eye"></i></a>
                         <a href="index.php?action=alumnos&id='.$item["matricula"].'" class="edit" title="Editar" data-toggle="tooltip"><i class="fa fa-edit"></i></a>
                         <a href="index.php?action=alumnos&idBorrar='.$item["matricula"].'" class="danger" title="Editar" data-toggle="tooltip"><i class="fa fa-trash"></i></a>  
                     </td>
@@ -66,6 +67,158 @@
             }
 
         }
+
+      //Consulta los datos de un ALumnos para mostrar las materias a las que se encuentra inscrito
+      public function consultarAlumnoController(){
+        //Se almacena el id selecciono del registro seleccionado 
+        $datosController = $_GET["id"];
+        //Se hace un llamado al metodo del modelo que hace una consulta para traer los registros con ese id
+        $respuesta = Datos::consultarAlumnoModel($datosController, "alumnos");
+        $respuesta_am = Datos::consultarAlumnoMateriasModel($datosController,"alumnos");
+        $respuesta_materias =  Datos::obtenerMateriasGrupoModel("materias", $respuesta['id_carrera']);
+        
+
+        $st_materias="";
+        for($i=0;$i<sizeof($respuesta_materias);$i++)
+          $st_materias=$st_materias."<option value='".$respuesta_materias[$i]['id_materia']."' >".$respuesta_materias[$i]['nombre']." - ".$respuesta_materias[$i]['maestro']."</option>";
+
+        ?>
+          <div class="box-content card white col-xs-5">
+            <h4 class="box-title">Datos del Alumno</h4>
+            <!-- /.box-title -->
+              <div class="card-content col-xs">
+                <div class="row small-spacing">
+                  <b>Matricula:</b>&nbsp;<?php echo $respuesta['matricula'];?><br>
+                  <b>Nombre:</b>&nbsp;<?php echo $respuesta['nombre'];?><br>
+                  <b>Carrera:</b>&nbsp;<?php echo $respuesta['carrera'];?><br>
+                  <b>Tutor:</b>&nbsp;<?php echo $respuesta['tutor'];?><br>
+                </div>
+              </div>
+          </div>
+          <div class="col-xs-1"></div>
+          
+          <div class="box-content card white col-xs-6">
+            <h4 class="box-title">Dar de alta materia</h4>
+            <!-- /.box-title -->
+              <div class="card-content col-xs">
+                <div class="row small-spacing">
+                <form method="post" action="index.php?action=alumnos&ver=1&id=<?php echo $_GET['id'];?>">
+                  <input type="hidden" name="matriculaAlumnoAlta" value="<?php echo $_GET['id'];?>">
+                  <div class="form-group has-inverse col-xs-8">
+                    <select class="form-control select2_1" name="id_materiaAlta">
+                      <?php echo $st_materias; ?>
+                    </select>
+                    <br>
+                  </div>
+
+                  <div  class="col-xs-4">
+                    <button type="submit" class="btn btn-primary btn-sm waves-effect waves-light">Aceptar</button>
+                  </div>
+
+                  </form>
+                </div>
+              </div>
+          </div>
+
+          <div class="box-content col-xs-12">
+              <h4 class="box-title">Alumnos inscritos a la materia</h4>
+              <!-- /.box-title -->    
+            
+              <table  id="example" class="table table-striped table-bordered display" style="width:100%;" >
+                  <thead>
+                      <tr>
+                        <th>Materia</th>
+                        <th>Maestro</th>
+                        <th>Grupo</th>
+                        <th>Acciones</th>
+                      </tr>
+                  </thead>
+                  <tfoot>
+                      <tr>
+                        <th>Materia</th>
+                        <th>Maestro</th>
+                        <th>Grupo</th>
+                        <th>Acciones</th>
+                      </tr>
+                  </tfoot>
+                  <tbody>
+                      <?php
+                      foreach($respuesta_am as $row => $item){
+                        echo'<tr>
+                                <td>'.$item["materia"].'</td>
+                                <td>'.$item["maestro"].'</td>
+                                <td>'.$item["grupo"].'</td>
+                                <td>
+                                    <a href="index.php?action=alumnos&ver=1&id='.$_GET["id"].'&idBaja='.$item["id_materia"].'" class="danger" title="Dar de baja" data-toggle="tooltip"><i class="fa fa-trash"></i></a>  
+                                </td>
+                            </tr>';
+                      }
+                      ?>
+                  </tbody>
+              </table>
+            </div>
+        <?php
+      }
+
+        ///Registro de un alumno en una materia desde la consulta a los datos de un alumno///////////////////////////////////////
+      public function altaAlumnoMateriaController(){
+        //Valida que los campos hayan sido llenados
+        if(isset($_POST["matriculaAlumnoAlta"])){
+            //los datos que seran insertados en la base de datos se almacenan en una array que sera enviado como parametro al metodo que realiza la insercion
+            $datosController = array("matricula"=>$_POST['matriculaAlumnoAlta'],
+                                    "id_materia"=>$_POST["id_materiaAlta"]
+                                    );
+
+            //Llamada al metodo del modelo realiazar la insercion, envia como parametro el array con los datos a insertar y el nombre de la tabla en la cual seran insertados los datos
+            $respuesta = Datos::altaMateriaAlumnoModel($datosController, "materia_alumno");
+
+            //Verifica si la insercion ha sido exitosa
+            //en caso de ser exitosa mostrara un mensaje que indica el exito de la accion
+            if($respuesta == "success"){
+                echo '<div class="box-content bg-success text-white">
+                    <h4>Se han insertado los datos exitosamente</h4>
+                </div>';
+            }
+            //En caso de que haya fallado la insercion se motrara un mensaje indicando el fallo
+            else{
+                echo '<div class="box-content bg-danger text-white">
+                    <h4>No ha sido posible guardar los datos</h4>
+                </div>';
+            }
+
+        }
+    }
+
+
+    ////Baja de un alumno en una materia////////////////////////////////////////////////////////////////////////
+    public function bajaAlumnoMateriaController(){
+      //Valida que los campos hayan sido llenados
+      if(isset($_GET["idBaja"])){
+          //los datos que seran insertados en la base de datos se almacenan en una array que sera enviado como parametro al metodo que realiza la insercion
+          $datosController =array("matricula"=>$_GET['id'],
+                                  "materia"=>$_GET["idBaja"]
+                                  );
+
+          //Llamada al metodo del modelo realiazar la insercion, envia como parametro el array con los datos a insertar y el nombre de la tabla en la cual seran insertados los datos
+          $respuesta = Datos::bajaMateriaAlumnoModel($datosController, "materia_alumno");
+
+          //Verifica si la insercion ha sido exitosa
+          //en caso de ser exitosa mostrara un mensaje que indica el exito de la accion
+          if($respuesta == "success"){
+              echo '<div class="box-content bg-success text-white">
+                  <h4>Se han eliminado los datos exitosamente</h4>
+              </div>';
+          }
+          //En caso de que haya fallado la insercion se motrara un mensaje indicando el fallo
+          else{
+              echo '<div class="box-content bg-danger text-white">
+                  <h4>No ha sido posible eliminar los datos</h4>
+              </div>';
+          }
+
+      }
+
+    }
 
         //Metodo para mostrar el formulario de registro de Alumno ///////////////////////////////////////////////////////
         public function registrarAlumnoController(){
@@ -332,6 +485,93 @@
             }
 
         }
+
+      //Consulta de los Materia para mostrar sus datos
+      public function consultarMaestroController(){
+        //Se almacena el id selecciono del registro seleccionado 
+        $datosController = $_GET["id"];
+        //Se hace un llamado al metodo del modelo que hace una consulta para traer los registros con ese id
+        $respuesta = Datos::consultarMateriaModel($datosController, "materias");
+        $respuesta_inscritos = Datos::consultarMateriaInscritosModel($datosController,"materias");
+        $respuesta_alumnos =  Datos::obtenerAlumnosCarreraModel("alumnos", $respuesta['id_carrera']);
+
+
+        $st_alumnos="";
+        for($i=0;$i<sizeof($respuesta_alumnos);$i++)
+          $st_alumnos=$st_alumnos."<option value='".$respuesta_alumnos[$i]['matricula']."'>".$respuesta_alumnos[$i]['nombre']."</option>";
+
+        ?>
+          <div class="box-content card white col-xs-5">
+            <h4 class="box-title">Datos de la Materia</h4>
+            <!-- /.box-title -->
+              <div class="card-content col-xs">
+                <div class="row small-spacing">
+                  <b>Nombre:</b>&nbsp;<?php echo $respuesta['nombre'];?><br>
+                  <b>Carrera:</b>&nbsp;<?php echo $respuesta['carrera'];?><br>
+                  <b>Maestro:</b>&nbsp;<?php echo $respuesta['maestro'];?><br>
+                </div>
+              </div>
+          </div>
+          <div class="col-xs-1"></div>
+          
+          <div class="box-content card white col-xs-6">
+            <h4 class="box-title">Dar de alta alumno</h4>
+            <!-- /.box-title -->
+              <div class="card-content col-xs">
+                <div class="row small-spacing">
+                <form method="post" action="index.php?action=materias&ver=1&id=<?php echo $_GET['id'];?>">
+                  <input type="hidden" name="id_materiaAlta" value="<?php echo $_GET['id'];?>">
+                  <div class="form-group has-inverse col-xs-8">
+                    <select class="form-control select2_1" name="id_alumnoMateria">
+                      <?php echo $st_alumnos; ?>
+                    </select>
+                  </div>
+
+                  <div  class="col-xs-4">
+                    <button type="submit" class="btn btn-primary btn-sm waves-effect waves-light">Aceptar</button>
+                  </div>
+
+                  </form>
+                </div>
+              </div>
+          </div>
+
+          <div class="box-content col-xs-12">
+              <h4 class="box-title">Alumnos inscritos a la materia</h4>
+              <!-- /.box-title -->    
+            
+              <table  id="example" class="table table-striped table-bordered display" style="width:100%;" >
+                  <thead>
+                      <tr>
+                        <th>Matricula</th>
+                        <th>Nombre</th>
+                        <th>Acciones</th>
+                      </tr>
+                  </thead>
+                  <tfoot>
+                      <tr>
+                        <th>Matricula</th>
+                        <th>Nombre</th>
+                        <th>Acciones</th>
+                      </tr>
+                  </tfoot>
+                  <tbody>
+                      <?php
+                      foreach($respuesta_inscritos as $row => $item){
+                        echo'<tr>
+                                <td>'.$item["matricula_alumno"].'</td>
+                                <td>'.$item["nombre"].'</td>
+                                <td>
+                                    <a href="index.php?action=materias&ver=1&id='.$_GET["id"].'&idBaja='.$item["matricula_alumno"].'" class="danger" title="Dar de baja" data-toggle="tooltip"><i class="fa fa-trash"></i></a>  
+                                </td>
+                            </tr>';
+                      }
+                      ?>
+                  </tbody>
+              </table>
+            </div>
+        <?php
+      }
 
         //Metodo para mostrar el formulario de registro de Maestro
         public function registrarMaestroController(){
@@ -706,7 +946,7 @@
         <?php
       }
 
-      ///Registro de un alumno en una materia//////////////////////////////////////////////////////////////////////////////////
+      ///Registro de un alumno en una materia desde la consuta a los datos de una materia//////////////////////////////////////
       public function altaMateriaAlumnoController(){
         //Valida que los campos hayan sido llenados
         if(isset($_POST["id_materiaAlta"])){
@@ -734,6 +974,8 @@
 
          }
      }
+
+     
 
        ////Baja de un alumno en una materia////////////////////////////////////////////////////////////////////////
        public function bajaMateriaAlumnoController(){

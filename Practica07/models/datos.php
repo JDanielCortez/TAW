@@ -82,6 +82,18 @@
         }
 
         /******************************************************************************************************************
+        *OBTENER MATERIAS QUE ESTAN DADAS DE ALTA EN UN GRUPO POR CARRERA -------------------------------------------------
+        ******************************************************************************************************************/
+        public function obtenerMateriasGrupoModel($tabla, $id){
+            $stmt = Conexion::conectar()->prepare("SELECT m.id_materia, m.nombre, p.nombre as 'maestro' FROM $tabla m INNER JOIN maestros p ON m.num_empleado = p.num_empleado INNER JOIN grupo_materia gm ON m.id_materia = gm.id_materia WHERE m.id_carrera = :id_carrera");
+
+            $stmt->bindParam(":id_carrera", $id, PDO::PARAM_STR);
+            $stmt->execute();
+
+            return $stmt->fetchAll();
+        }
+
+        /******************************************************************************************************************
          *ALUMNOS-----------------------------------------------------------------------------------------------------------
         ******************************************************************************************************************/
       
@@ -142,6 +154,42 @@
            $stmt->close();
    
        }
+
+       //Conultar Alumno - Metodo para realizar una consulta a partir de un id ($datosModel), y regresar los datos de ese registro en especifico, y el nombre de la tabla, en si lo que hace es una busqueda
+       public function consultarAlumnoModel($datosModel, $tabla){
+        //Se realiza la conexion y se prepara la consulta de busquda
+        $stmt = Conexion::conectar()->prepare("SELECT a.matricula as matricula, a.nombre as nombre, c.nombre as carrera, m.nombre as tutor, c.id as id_carrera from $tabla as a inner join carrera as c on c.id=a.id_carrera INNER JOIN maestros as m on m.num_empleado=a.id_tutor WHERE matricula = :id");
+       
+       //Parametros de la consulta
+       $stmt->bindParam(":id", $datosModel, PDO::PARAM_STR);	
+
+       //Se ejecuta la consulta
+       $stmt->execute();
+
+       // se regresa el resultado de la consulta
+       return $stmt->fetch();
+
+       $stmt->close();
+
+   }
+
+   //Conultar materias de un alumno - Metodo para realizar una consulta a partir de un id ($datosModel), y regresar los datos de ese registro en especifico, y el nombre de la tabla, en si lo que hace es una busqueda
+   public function consultarAlumnoMateriasModel($datosModel, $tabla){
+        //Se realiza la conexion y se prepara la consulta de busquda
+        $stmt = Conexion::conectar()->prepare("SELECT m.nombre as materia, m.id_materia, g.nombre as grupo, t.nombre as maestro FROM $tabla a INNER JOIN materia_alumno ma ON a.matricula = ma.matricula_alumno INNER JOIN materias m ON ma.id_materia = m.id_materia INNER JOIN maestros t ON m.num_empleado = t.num_empleado INNER JOIN grupo_materia gp ON m.id_materia = gp.id_materia INNER JOIN grupos g ON gp.id_grupo = g.id_grupo WHERE a.matricula = :id");
+    
+        //Parametros de la consulta
+        $stmt->bindParam(":id", $datosModel, PDO::PARAM_STR);	
+
+        //Se ejecuta la consulta
+        $stmt->execute();
+
+        // se regresa el resultado de la consulta
+        return $stmt->fetchAll();
+
+        $stmt->close();
+
+    }
       
       //Actualizar Alumno - Metodo para cambiar los datos de un registro existente, recibe como parametros un array con los datos que se almacenaran y el nombre de la tabla
         public function actualizarAlumnoModel($datosModel, $tabla){
@@ -376,7 +424,7 @@
         public function altaMateriaAlumnoModel($datosModel, $tabla){
             //Se realiza la conexion y se prepara la consulta de insercion
             $stmt = Conexion::conectar()->prepare("INSERT INTO $tabla (matricula_alumno, id_materia) VALUES (:matricula, :id_materia)");	
-    
+            
             //Se definen los valores de los parametros indicados en la sentencia y que indican los datos que se insertaran
             $stmt->bindParam(":matricula", $datosModel["matricula"], PDO::PARAM_STR);
             $stmt->bindParam(":id_materia", $datosModel["id_materia"], PDO::PARAM_INT);
