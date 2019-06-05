@@ -171,11 +171,26 @@
         }
 
       
-       //Eliminar Usuario
+       //Eliminar Alumno
         public function borrarAlumnoModel($datosModel, $tabla){
-
             $stmt = Conexion::conectar()->prepare("DELETE FROM $tabla WHERE matricula = :id");
-            $stmt->bindParam(":id", $datosModel, PDO::PARAM_INT);
+            $stmt->bindParam(":id", $datosModel, PDO::PARAM_STR);
+    
+            if($stmt->execute()){
+                return "success";
+            }
+            else{
+                return "error";
+            }
+            //En caso de fallar regresa el mensaje de error
+            $stmt->close();
+    
+        }
+
+        //Eliminar Alumno de una sesion_tutoria o de una materia
+        public function borrarAlumnoDatosModel($datosModel, $tabla){
+            $stmt = Conexion::conectar()->prepare("DELETE FROM $tabla WHERE matricula_alumno = :id");
+            $stmt->bindParam(":id", $datosModel, PDO::PARAM_STR);
     
             if($stmt->execute()){
                 return "success";
@@ -505,7 +520,7 @@
        //Csonulta de Grupo - Metodo que realiza la consulta para recuperar los datos almacenados en la base de datos, recibe  como parametro el nombre de la tabla de la cual traera los registros
        public function consultarGrupoModel($datosModel, $tabla){
         //Se realiza la conexion y se prepara la consulta 
-            $stmt = Conexion::conectar()->prepare("SELECT g.id_grupo, g.nombre, c.nombre as 'carrera', g.id_carrera FROM grupos g INNER JOIN carrera c ON g.id_carrera = c.id");	
+            $stmt = Conexion::conectar()->prepare("SELECT g.id_grupo, g.nombre, c.nombre as 'carrera', g.id_carrera FROM $tabla g INNER JOIN carrera c ON g.id_carrera = c.id WHERE id_grupo = :id");	
 
             //Parametros de la consulta
             $stmt->bindParam(":id", $datosModel, PDO::PARAM_STR);	
@@ -523,7 +538,7 @@
          //Vista de los materias pertenecientes a un grupo en especifico - Metodo que realiza la consulta para recuperar los datos almacenados en la base de datos, recibe como parametro el nombre de la tabla de la cual traera los registros
          public function consultarGrupoMateriaModel($datosModel, $tabla){
             //Se realiza la conexion y se prepara la consulta de insercion
-           $stmt = Conexion::conectar()->prepare("SELECT m.id_materia, m.nombre FROM $tabla m INNER JOIN grupo_materia mg ON m.id_materia = mg.id_materia INNER JOIN grupos g ON g.id_grupo = :id");
+           $stmt = Conexion::conectar()->prepare("SELECT m.id_materia, m.nombre FROM $tabla m INNER JOIN grupo_materia mg ON m.id_materia = mg.id_materia INNER JOIN grupos g ON g.id_grupo = mg.id_grupo WHERE mg.id_grupo  = :id");
            
             //Parametros de la consulta
             $stmt->bindParam(":id", $datosModel, PDO::PARAM_INT);	

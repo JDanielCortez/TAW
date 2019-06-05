@@ -284,6 +284,8 @@
                 //datosController almcen el id para ser enviado como parametro
                 $datosController = $_GET["idBorrar"];
                 //Se realiza el llamado al metodo en el modelo encargado de la eliminacion
+                $respuesta = Datos::borrarAlumnoDatosModel($datosController, "sesion_alumnos");
+                $respuesta = Datos::borrarAlumnoModel($datosController, "materia_alumno");
                 $respuesta = Datos::borrarAlumnoModel($datosController, "alumnos");
                 
                 //verifica el resultado del llamado al metodo anterior
@@ -1008,11 +1010,11 @@
         public function consultarGrupoController(){
           //Se almacena el id selecciono del registro seleccionado 
           $datosController = $_GET["id"];
+          
           //Se hace un llamado al metodo del modelo que hace una consulta para traer los registros con ese id
           $respuesta = Datos::consultarGrupoModel($datosController, "grupos");
           $respuesta_mg = Datos::consultarGrupoMateriaModel($datosController,"materias");
           $respuesta_materias =  Datos::obtenerMateriasCarreraModel("materias", $respuesta['id_carrera']);
-  
   
           $st_materias="";
           for($i=0;$i<sizeof($respuesta_materias);$i++)
