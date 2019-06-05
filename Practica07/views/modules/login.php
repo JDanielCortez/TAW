@@ -3,6 +3,7 @@
 		<div class="inside">
 			<div class="title"><strong>Gestor</strong>Escolar</div>
 			<!-- /.title -->
+			<div align="center"><img src="views/img/eductaion-hat-school-icon-4-300x300.png" height="210" width="210"></div>
 			<div class="frm-title">Acceder</div>
 			<!-- /.frm-title -->
 			<div class="frm-input"><input type="email" placeholder="Nombre de Usuario" name="emailIngreso" class="frm-inp" value="<?php if(isset($_POST['emailIngreso'])){ echo $_POST['emailIngreso'];}?>"><i class="fa fa-user frm-ico"></i></div>

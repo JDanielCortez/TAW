@@ -7,7 +7,7 @@
 	<meta name="description" content="">
 	<meta name="author" content="">
   
-  <link rel="shortcut icon" type="image/x-icon" href="img/eductaion-hat-school-icon-4-300x300.png" />
+  <link rel="shortcut icon" type="image/x-icon" href="views/img/eductaion-hat-school-icon-4-300x300.png" />
 
 
 	<title>Gestor Escolar</title>
@@ -69,8 +69,6 @@
 		td {
 		  vertical-align: baseline;
 		}
-
-		
 	</style>
 
 </head>
