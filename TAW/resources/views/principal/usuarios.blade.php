@@ -23,8 +23,10 @@
                             <div class="col-md-6">
                                 <div class="input-group">
                                     <select class="form-control col-md-3" id="opcion" name="opcion">
-                                      <option value="nombre">Nombre</option>
-                                      <option value="descripcion">Descripción</option>
+                                      <option value="nombre">Rol</option>
+                                      <option value="correo">E-mail</option>
+                                      <option value="descripcion">Rol</option>
+                                      <option value="Condicion">Condición</option>
                                     </select>
                                     <input type="text" id="texto" name="texto" class="form-control" placeholder="Texto a buscar">
                                     <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i> Buscar</button>
@@ -36,8 +38,11 @@
                                 <tr>
                                     <th>Opciones</th>
                                     <th>Nombre</th>
-                                    <th>Descripción</th>
-                                    <th>Estado</th>
+                                    <th>Dirección</th>
+                                    <th>Teléfono</th>
+                                    <th>E-mail</th>
+                                    <th>Rol</th>
+                                    <th>Condición</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -50,11 +55,12 @@
                                           <i class="icon-trash"></i>
                                         </button>
                                     </td>
-                                    <td>Equipos</td>
-                                    <td>Dispositivos electrónicos</td>
-                                    <td>
-                                        <span class="badge badge-success">Activo</span>
-                                    </td>
+                                    <td>Juan Daniel Cortez Nava</td>
+                                    <td>Calle NAciones Unidas CP 87123</td>
+                                    <td>8431991919</td>
+                                    <td>1630136@upv.edu.mx</td>
+                                    <td>Admin</td>
+                                    <td>Activo</td>
                                 </tr>
                                 <tr>
                                     <td>
@@ -65,11 +71,12 @@
                                           <i class="icon-trash"></i>
                                         </button>
                                     </td>
-                                    <td>Equipos</td>
-                                    <td>Dispositivos electrónicos</td>
-                                    <td>
-                                        <span class="badge badge-success">Activo</span>
-                                    </td>
+                                    <td>Juan Daniel Cortez Nava</td>
+                                    <td>Calle NAciones Unidas CP 87123</td>
+                                    <td>8431991919</td>
+                                    <td>1630136@upv.edu.mx</td>
+                                    <td>Admin</td>
+                                    <td>Activo</td>
                                 </tr>
                                 <tr>
                                     <td>
@@ -80,11 +87,12 @@
                                           <i class="icon-trash"></i>
                                         </button>
                                     </td>
-                                    <td>Equipos</td>
-                                    <td>Dispositivos electrónicos</td>
-                                    <td>
-                                        <span class="badge badge-secondary">Inactivo</span>
-                                    </td>
+                                    <td>Juan Daniel Cortez Nava</td>
+                                    <td>Calle NAciones Unidas CP 87123</td>
+                                    <td>8431991919</td>
+                                    <td>1630136@upv.edu.mx</td>
+                                    <td>Admin</td>
+                                    <td>Activo</td>
                                 </tr>
                                 <tr>
                                     <td>
@@ -95,26 +103,12 @@
                                           <i class="icon-trash"></i>
                                         </button>
                                     </td>
-                                    <td>Equipos</td>
-                                    <td>Dispositivos electrónicos</td>
-                                    <td>
-                                        <span class="badge badge-secondary">Inactivo</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modalNuevo">
-                                          <i class="icon-pencil"></i>
-                                        </button>&nbsp;
-                                        <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modalEliminar">
-                                          <i class="icon-trash"></i>
-                                        </button>
-                                    </td>
-                                    <td>Equipos</td>
-                                    <td>Dispositivos electrónicos</td>
-                                    <td>
-                                        <span class="badge badge-success">Activo</span>
-                                    </td>
+                                    <td>Juan Daniel Cortez Nava</td>
+                                    <td>Calle NAciones Unidas CP 87123</td>
+                                    <td>8431991919</td>
+                                    <td>1630136@upv.edu.mx</td>
+                                    <td>Admin</td>
+                                    <td>Activo</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -149,7 +143,7 @@
                 <div class="modal-dialog modal-primary modal-lg" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h4 class="modal-title">Agregar categoría</h4>
+                            <h4 class="modal-title">Agregar Usuario</h4>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                               <span aria-hidden="true">×</span>
                             </button>
@@ -160,13 +154,42 @@
                                     <label class="col-md-3 form-control-label" for="text-input">Nombre</label>
                                     <div class="col-md-9">
                                         <input type="text" id="nombre" name="nombre" class="form-control" placeholder="Nombre de categoría">
-                                        <span class="help-block">(*) Ingrese el nombre de la categoría</span>
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-md-3 form-control-label" for="email-input">Descripción</label>
+                                    <label class="col-md-3 form-control-label" for="text-input">Tipo de documento</label>
                                     <div class="col-md-9">
-                                        <input type="email" id="descripcion" name="descripcion" class="form-control" placeholder="Enter Email">
+                                        <input type="text" id="tipo_documento" name="tipo_documento" class="form-control" placeholder="Tipo de Documento">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-md-3 form-control-label" for="text-input">Numero de documento</label>
+                                    <div class="col-md-9">
+                                        <input type="text" id="numero_documento" name="numero_documento" class="form-control" placeholder="Número de Documento">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-md-3 form-control-label" for="email-input">Dirección</label>
+                                    <div class="col-md-9">
+                                        <input type="text" id="direccion" name="direccion" class="form-control" placeholder="Ingrese dirección">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-md-3 form-control-label" for="text-input">Teléfono</label>
+                                    <div class="col-md-9">
+                                        <input type="text" id="telefono" name="telefono" class="form-control" placeholder="Teléfono">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-md-3 form-control-label" for="text-input">E-mail</label>
+                                    <div class="col-md-9">
+                                        <input type="email" id="e-mail" name="e-mail" class="form-control" placeholder="Correo electronico">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-md-3 form-control-label" for="text-input">Rol</label>
+                                    <div class="col-md-9">
+                                        <input type="text" id="rol" name="rol" class="form-control" placeholder="Rol">
                                     </div>
                                 </div>
                             </form>
@@ -186,13 +209,13 @@
                 <div class="modal-dialog modal-danger" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h4 class="modal-title">Eliminar Categoría</h4>
+                            <h4 class="modal-title">Eliminar Usuario</h4>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                               <span aria-hidden="true">×</span>
                             </button>
                         </div>
                         <div class="modal-body">
-                            <p>Estas seguro de eliminar la categoría?</p>
+                            <p>Estas seguro de eliminar al Usuario?</p>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
