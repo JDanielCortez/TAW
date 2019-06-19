@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Sistema Ventas Laravel Vue Js- IncanatoIT">
     <meta name="author" content="Incanatoit.com">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="keyword" content="Sistema ventas Laravel Vue Js, Sistema compras Laravel Vue Js">
     <link rel="shortcut icon" href="img/favicon.png">
     <title>Sistema Ventas - IncanatoIT</title>
@@ -17,6 +18,7 @@
 </head>
 
 <body class="app header-fixed sidebar-fixed aside-menu-fixed aside-menu-hidden">
+  <div id="app">
     <header class="app-header navbar">
         <button class="navbar-toggler mobile-sidebar-toggler d-lg-none mr-auto" type="button">
           <span class="navbar-toggler-icon"></span>
@@ -70,80 +72,8 @@
     </header>
 
     <div class="app-body">
-        <div class="sidebar">
-            <nav class="sidebar-nav">
-                <ul class="nav">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="main.html"><i class="icon-speedometer"></i> Escritorio</a>
-                    </li>
-                    <li class="nav-title">
-                        Mantenimiento
-                    </li>
-                    <li class="nav-item nav-dropdown">
-                        <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-bag"></i> Almacén</a>
-                        <ul class="nav-dropdown-items">
-                            <li class="nav-item">
-                                <a class="nav-link" href="/principal"><i class="icon-bag"></i> Categorías</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/articulos"><i class="icon-bag"></i> Artículos</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="nav-item nav-dropdown">
-                        <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-wallet"></i> Compras</a>
-                        <ul class="nav-dropdown-items">
-                            <li class="nav-item">
-                                <a class="nav-link" href="/ingresos"><i class="icon-wallet"></i> Ingresos</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/proveedores"><i class="icon-notebook"></i> Proveedores</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="nav-item nav-dropdown">
-                        <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-basket"></i> Ventas</a>
-                        <ul class="nav-dropdown-items">
-                            <li class="nav-item">
-                                <a class="nav-link" href="/ventas"><i class="icon-basket-loaded"></i> Ventas</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="clientes"><i class="icon-notebook"></i> Clientes</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="nav-item nav-dropdown">
-                        <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-people"></i> Acceso</a>
-                        <ul class="nav-dropdown-items">
-                            <li class="nav-item">
-                                <a class="nav-link" href="usuarios"><i class="icon-user"></i> Usuarios</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/roles"><i class="icon-user-following"></i> Roles</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="nav-item nav-dropdown">
-                        <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-pie-chart"></i> Reportes</a>
-                        <ul class="nav-dropdown-items">
-                            <li class="nav-item">
-                                <a class="nav-link" href="/reporteIngresos"><i class="icon-chart"></i> Reporte Ingresos</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/reporteVentas"><i class="icon-chart"></i> Reporte Ventas</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="main.html"><i class="icon-book-open"></i> Ayuda <span class="badge badge-danger">PDF</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="main.html"><i class="icon-info"></i> Acerca de...<span class="badge badge-info">IT</span></a>
-                    </li>
-                </ul>
-            </nav>
-            <button class="sidebar-minimizer brand-minimizer" type="button"></button>
-        </div>
+            @include('plantilla.sidebar')
+
             <!-- Contenido principal -->
             @yield('contenido')
             <!-- fin contenido principal -->
@@ -187,7 +117,7 @@
     </div>
 
     
-
+  </div>
     <footer class="app-footer">
         <span><a href="http://www.incanatoit.com/">IncanatoIT</a> &copy; 2017</span>
         <span class="ml-auto">Desarrollado por <a href="http://www.incanatoit.com/">IncanatoIT</a></span>
@@ -196,6 +126,7 @@
     <!-- Bootstrap and necessary plugins -->
     <script src="js/app.js"></script>
     <script src="js/plantilla.js"></script>
+    <script src=""></script>
 </body>
 
 </html>
