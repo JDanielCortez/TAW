@@ -14,5 +14,4 @@
         <ingresos-component></ingresos-component>
     </template>
 
-    
     @endsection

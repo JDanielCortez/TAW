@@ -11,7 +11,7 @@
                 <div class="card">
                     <div class="card-header">
                         <i class="fa fa-align-justify"></i> Categorías
-                        <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#modalNuevo">
+                        <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#modalNuevo" >
                             <i class="icon-plus"></i>&nbsp;Nuevo
                         </button>
                     </div>
@@ -24,7 +24,7 @@
                                       <option value="descripcion">Descripción</option>
                                     </select>
                                     <input type="text" id="texto" name="texto" class="form-control" placeholder="Texto a buscar">
-                                    <button type="submit" class="btn btn-primary" ><i class="fa fa-search"></i> Buscar</button>
+                                    <button type="submit" class="btn btn-primary" ><i class="fa fa-search" v-on:click="hola()"></i> Buscar</button>
                                 </div>
                             </div>
                         </div>
@@ -209,6 +209,7 @@
 
 <script>
     export default {
+
         mounted() {
             console.log('Categorias Component mounted.');
         }

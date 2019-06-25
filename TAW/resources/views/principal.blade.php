@@ -73,12 +73,14 @@
 
     <div class="app-body">
         
+
             @include('plantilla.sidebar')
 
         
             <!-- Contenido principal -->
             @yield('contenido')
             <!-- fin contenido principal -->
+            
     </div>
 
     

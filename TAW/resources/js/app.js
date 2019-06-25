@@ -35,9 +35,9 @@ const app = new Vue({
     data : {
         menu : 0
     },
-    methods: {
-        numerar(num){
-            alert(num);
+    methods : {
+        hola: function(){
+            alert('holaasdasdsad');
         }
     }
 });
