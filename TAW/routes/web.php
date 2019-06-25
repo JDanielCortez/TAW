@@ -11,10 +11,13 @@
 |
 */
 
-/*Route::get('/', function () {
-    return view('welcome');
+ Route::get('/', function () {
+     return view('principal/contenido');
 });
 
+// Route::get('/{vue_capture?}', function () {
+//     return view('principal/contenido');
+// })->where('vue_capture', '[\/\w\.-]*');
 
 //Mostrar una ruta limpia
 Route::get('/usr/{id}', function ($id) {
@@ -25,7 +28,7 @@ Route::get('/usr/{id}', function ($id) {
 Route::get('/principal', function () {
     return view('principal/contenido');
 });
-
+/*
 Route::get('/articulos', function () {
     return view('principal/articulos');
 });
@@ -64,9 +67,9 @@ Route::get('/reporteVentas', function () {
 
 Route::get('/login', function () {
     return view('login');
-});*/
+});
+*/
 
+// Route::get('/', 'ControladorPrincipal@index');
 
-Route::get('/', 'ControladorPrincipal@index');
-
-Route::get('/', 'UserController@index');
+// Route::get('/', 'UserController@index');

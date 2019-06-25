@@ -72,48 +72,13 @@
     </header>
 
     <div class="app-body">
+        
             @include('plantilla.sidebar')
 
+        
             <!-- Contenido principal -->
             @yield('contenido')
             <!-- fin contenido principal -->
-
-            <!-- Contenido articulos -->
-            @yield('articulos')
-            <!-- fin contenido principal -->
-
-            <!-- Contenido ingresos -->
-            @yield('ingresos')
-            <!-- fin contenido principal -->
-
-            <!-- Contenido ingresos -->
-            @yield('proveedores')
-            <!-- fin contenido principal -->
-
-            <!-- Contenido ingresos -->
-            @yield('ventas')
-            <!-- fin contenido principal -->
-
-            <!-- Contenido ingresos -->
-            @yield('clientes')
-            <!-- fin contenido principal -->
-
-            <!-- Contenido ingresos -->
-            @yield('usuarios')
-            <!-- fin contenido principal -->
-
-            <!-- Contenido ingresos -->
-            @yield('roles')
-            <!-- fin contenido principal -->
-
-            <!-- Contenido ingresos -->
-            @yield('reporteVentas')
-            <!-- fin contenido principal -->
-
-            <!-- Contenido ingresos -->
-            @yield('reporteIngresos')
-            <!-- fin contenido principal -->
-
     </div>
 
     
@@ -126,7 +91,6 @@
     <!-- Bootstrap and necessary plugins -->
     <script src="js/app.js"></script>
     <script src="js/plantilla.js"></script>
-    <script src=""></script>
 </body>
 
 </html>

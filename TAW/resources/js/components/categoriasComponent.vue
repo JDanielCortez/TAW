@@ -1,5 +1,4 @@
  <template>
- <!-- Contenido Principal -->
         <main class="main">
             <!-- Breadcrumb -->
             <ol class="breadcrumb">
@@ -25,7 +24,7 @@
                                       <option value="descripcion">Descripción</option>
                                     </select>
                                     <input type="text" id="texto" name="texto" class="form-control" placeholder="Texto a buscar">
-                                    <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i> Buscar</button>
+                                    <button type="submit" class="btn btn-primary" ><i class="fa fa-search"></i> Buscar</button>
                                 </div>
                             </div>
                         </div>
@@ -116,6 +115,7 @@
                                 </tr>
                             </tbody>
                         </table>
+                        
                         <nav>
                             <ul class="pagination">
                                 <li class="page-item">
@@ -201,7 +201,16 @@
                 </div>
                 <!-- /.modal-dialog -->
             </div>
+            
             <!-- Fin del modal Eliminar -->
         </main>
         <!-- /Fin del contenido principal -->
 </template>
+
+<script>
+    export default {
+        mounted() {
+            console.log('Categorias Component mounted.');
+        }
+    }
+</script>
