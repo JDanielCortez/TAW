@@ -20,8 +20,10 @@
                             <div class="col-md-6">
                                 <div class="input-group">
                                     <select class="form-control col-md-3" id="opcion" name="opcion">
+                                      <option value="categoria">Categoria</option>
+                                      <option value="codigo">Codigo</option>
                                       <option value="nombre">Nombre</option>
-                                      <option value="descripcion">Descripción</option>
+                                      <option value="condicion">Condicion</option>
                                     </select>
                                     <input type="text" id="texto" name="texto" class="form-control" placeholder="Texto a buscar">
                                     <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i> Buscar</button>
@@ -57,7 +59,7 @@
                                     <td>$7000</td>
                                     <td>2000</td>
                                     <td>Computadora HP</td>
-                                    <td>Nuevo</td>
+                                    <td>Nuevo</td> 
                                 </tr>
                                
                             </tbody>
