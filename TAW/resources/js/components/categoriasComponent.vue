@@ -209,7 +209,6 @@
 
 <script>
     export default {
-
         mounted() {
             console.log('Categorias Component mounted.');
         }
