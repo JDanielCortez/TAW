@@ -60,62 +60,6 @@
                                     <td>Pedro Roman</td>
                                     <td>8341090910</td>
                                 </tr>
-                                <tr>
-                                    <td>
-                                        <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modalNuevo">
-                                          <i class="icon-pencil"></i>
-                                        </button> &nbsp;
-                                        <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modalEliminar">
-                                          <i class="icon-trash"></i>
-                                        </button>
-                                    </td>
-                                    <td>Pro Inc.</td>
-                                    <td>Distribuidor de telefonos celulares</td>
-                                    <td>Edgar Montes</td>
-                                    <td>83498799898</td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modalNuevo">
-                                          <i class="icon-pencil"></i>
-                                        </button> &nbsp;
-                                        <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modalEliminar">
-                                          <i class="icon-trash"></i>
-                                        </button>
-                                    </td>
-                                    <td>Pro Inc.</td>
-                                    <td>Distribuidor de telefonos celulares</td>
-                                    <td>Edgar Montes</td>
-                                    <td>83498799898</td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modalNuevo">
-                                          <i class="icon-pencil"></i>
-                                        </button> &nbsp;
-                                        <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modalEliminar">
-                                          <i class="icon-trash"></i>
-                                        </button>
-                                    </td>
-                                    <td>Pro Inc.</td>
-                                    <td>Distribuidor de telefonos celulares</td>
-                                    <td>Edgar Montes</td>
-                                    <td>83498799898</td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modalNuevo">
-                                          <i class="icon-pencil"></i>
-                                        </button> &nbsp;
-                                        <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modalEliminar">
-                                          <i class="icon-trash"></i>
-                                        </button>
-                                    </td>
-                                    <td>Pro Inc.</td>
-                                    <td>Distribuidor de telefonos celulares</td>
-                                    <td>Edgar Montes</td>
-                                    <td>83498799898</td>
-                                </tr>
                             </tbody>
                         </table>
                         <nav>
