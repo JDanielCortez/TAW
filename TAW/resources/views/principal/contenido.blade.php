@@ -14,4 +14,8 @@
         <ingresos-component></ingresos-component>
     </template>
 
+    <template v-if="menu==3">
+        <proveedores-component></proveedores-component>
+    </template>
+
     @endsection
