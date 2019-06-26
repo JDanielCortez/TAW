@@ -18,4 +18,8 @@
         <proveedores-component></proveedores-component>
     </template>
 
+    <template v-if="menu==4">
+        <ventas-component></vetas-component>
+    </template>
+
     @endsection

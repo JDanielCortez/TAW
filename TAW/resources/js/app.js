@@ -24,6 +24,7 @@ Vue.component('categorias-component', require('./components/categoriasComponent.
 Vue.component('articulos-component', require('./components/articulosComponent.vue').default);
 Vue.component('ingresos-component', require('./components/ingresosComponent.vue').default);
 Vue.component('proveedores-component', require('./components/proveedoresComponent.vue').default);
+Vue.component('ventas-component', require('./components/ventasComponent.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
