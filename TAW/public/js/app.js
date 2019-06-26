@@ -2639,7 +2639,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
     console.log('Categorias Component mounted.');
@@ -22586,7 +22585,7 @@ var staticRenderFns = [
               _c("div", { staticClass: "modal-content" }, [
                 _c("div", { staticClass: "modal-header" }, [
                   _c("h4", { staticClass: "modal-title" }, [
-                    _vm._v("Agregar categoría")
+                    _vm._v("Agregar venta")
                   ]),
                   _vm._v(" "),
                   _c(
@@ -22638,11 +22637,7 @@ var staticRenderFns = [
                               name: "nombre",
                               placeholder: "Nombre de categoría"
                             }
-                          }),
-                          _vm._v(" "),
-                          _c("span", { staticClass: "help-block" }, [
-                            _vm._v("(*) Ingrese el nombre de la categoría")
-                          ])
+                          })
                         ])
                       ]),
                       _vm._v(" "),
