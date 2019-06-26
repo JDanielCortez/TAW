@@ -18,8 +18,10 @@
                             <div class="col-md-6">
                                 <div class="input-group">
                                     <select class="form-control col-md-3" id="opcion" name="opcion">
-                                      <option value="nombre">Nombre</option>
-                                      <option value="descripcion">Descripción</option>
+                                      <option value="proveedore">Proveedor</option>
+                                      <option value="usuario">Proveedor</option>
+                                      <option value="numeroComprobante">Número de Comprobante</option>
+                                      <option value="estado">Estado</option>
                                     </select>
                                     <input type="text" id="texto" name="texto" class="form-control" placeholder="Texto a buscar">
                                     <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i> Buscar</button>
@@ -29,43 +31,39 @@
                         <table class="table table-bordered table-striped table-sm">
                             <thead>
                                 <tr>
-                                    <th>Articulo</th>
-                                    <th>Cantidad</th>
-                                    <th>Fecha</th>
-                                    <th>Total</th>                                    
+                                    <th>Opciones</th>
+                                    <th>Proveedor</th>
+                                    <th>Usuario</th>
+                                    <th>Tipo de Comprobante</th>
+                                    <th>Serie de Comprobante</th>
+                                    <th>Numero de Comprobante</th>
+                                    <th>Fecha y Hora</th>
+                                    <th>Impuesto</th>
+                                    <th>Total de Compra</th>
+                                    <th>Estado</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>Hp 1000</td>
-                                    <td>10</td>
-                                    <td>10/03/2019</td>
-                                    <td>100000</td>
+                                    <td>
+                                        <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modalNuevo">
+                                          <i class="icon-pencil"></i>
+                                        </button> &nbsp;
+                                        <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modalEliminar">
+                                          <i class="icon-trash"></i>
+                                        </button>
+                                    </td>
+                                    <td>HP</td>
+                                    <td>Daniel</td>
+                                    <td>Tipo de comprobante</td>
+                                    <td>AA231</td>
+                                    <td>20100</td>
+                                    <td>20/04/2019 8:30:00</td>
+                                    <td>16 %</td>
+                                    <td>12000</td>
+                                    <td>Pagado</td> 
                                 </tr>
-                                <tr>
-                                    <td>Hp 1000</td>
-                                    <td>10</td>
-                                    <td>10/03/2019</td>
-                                    <td>100000</td>
-                                </tr>
-                                <tr>
-                                    <td>Hp 1000</td>
-                                    <td>10</td>
-                                    <td>10/03/2019</td>
-                                    <td>100000</td>
-                                </tr>
-                                <tr>
-                                    <td>Hp 1000</td>
-                                    <td>10</td>
-                                    <td>10/03/2019</td>
-                                    <td>100000</td>
-                                </tr>
-                                <tr>
-                                    <td>Hp 1000</td>
-                                    <td>10</td>
-                                    <td>10/03/2019</td>
-                                    <td>100000</td>
-                                </tr>
+                               
                             </tbody>
                         </table>
                         <nav>
