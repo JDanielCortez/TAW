@@ -49,21 +49,6 @@
                                           <i class="icon-trash"></i>
                                         </button>
                                     </td>
-                                    <td>Equipos</td>
-                                    <td>Dispositivos electrónicos</td>
-                                    <td>
-                                        <span class="badge badge-success">Activo</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modalNuevo">
-                                          <i class="icon-pencil"></i>
-                                        </button> &nbsp;
-                                        <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modalEliminar">
-                                          <i class="icon-trash"></i>
-                                        </button>
-                                    </td>
                                     <td>Alejandro Lopez</td>
                                     <td>INE</td>
                                     <td>98u9898</td>
