@@ -22,4 +22,8 @@
         <ventas-component></vetas-component>
     </template>
 
+    <template v-if="menu==5">
+        <clientes-component></clientes-component>
+    </template>
+
     @endsection
