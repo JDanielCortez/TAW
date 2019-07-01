@@ -16,6 +16,7 @@
 // });
 
 Route::resource('/categorias', 'CategoriaController');
+Route::resource('/articulos', 'ArticuloController');
 
 Route::get('/{vue_capture?}', function () {
      return view('principal/contenido');

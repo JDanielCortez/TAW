@@ -19,12 +19,12 @@
                         <div class="form-group row">
                             <div class="col-md-6">
                                 <div class="input-group">
-                                    <select class="form-control col-md-3" id="opcion" name="opcion">
-                                      <option value="nombre" v-model=>Nombre</option>
+                                    <select class="form-control col-md-3" id="opcion" name="opcion" v-model="filtro">
+                                      <option value="nombre">Nombre</option>
                                       <option value="descripcion">Descripción</option>
                                     </select>
-                                    <input type="text" id="texto" name="texto" class="form-control" placeholder="Texto a buscar">
-                                    <button type="submit" class="btn btn-primary" ><i class="fa fa-search" ></i> Buscar</button>
+                                    <input type="text" id="texto" name="texto" class="form-control" placeholder="Texto a buscar" v-model="busqueda">
+                                    <button v-on:click="buscar" type="submit" class="btn btn-primary" ><i class="fa fa-search" ></i> Buscar</button>
                                 </div>
                             </div>
                         </div>
@@ -32,13 +32,13 @@
                             <thead>
                                 <tr>
                                     <th>Opciones</th>
-                                    <th>Nombre</th>
-                                    <th>Descripción</th>
-                                    <th>Estado</th>
+                                    <th @click="ordenar('nombre')">Nombre</th>
+                                    <th @click="ordenar('descripcion')">Descripción</th>
+                                    <th @click="ordenar('condicion')">Estado</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr v-for="(item, index) in categorias" :key="index">
+                                <tr v-for="(item, index) in ordenados" :key="index">
                                     <td>
                                         <button v-on:click="editar(index)" type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modalNuevo">
                                           <i class="icon-pencil"></i>
@@ -60,22 +60,10 @@
                         <nav>
                             <ul class="pagination">
                                 <li class="page-item">
-                                    <a class="page-link" href="#">Ant</a>
-                                </li>
-                                <li class="page-item active">
-                                    <a class="page-link" href="#">1</a>
+                                    <a class="page-link" @click="anterior">Anterior</a>
                                 </li>
                                 <li class="page-item">
-                                    <a class="page-link" href="#">2</a>
-                                </li>
-                                <li class="page-item">
-                                    <a class="page-link" href="#">3</a>
-                                </li>
-                                <li class="page-item">
-                                    <a class="page-link" href="#">4</a>
-                                </li>
-                                <li class="page-item">
-                                    <a class="page-link" href="#">Sig</a>
+                                    <a class="page-link" @click="siguiente">Siguiente</a>
                                 </li>
                             </ul>
                         </nav>
@@ -111,13 +99,18 @@
                                         <input type="text" id="descripcion" name="descripcion" class="form-control" placeholder="Descripcion" v-model="categoria.descripcion" requiered>
                                     </div>
                                 </div>
-                                <div class="form-group row">
-                                    <label class="col-md-3 form-control-label" for="email-input">Condicion</label>
+                               
+                               <div class="form-group row" v-if="modoEditar">
+                                     <label for="condicion" class="col-md-3 form-control-label">Condición</label>
                                     <div class="col-md-9">
-                                        <input type="text" id="condicion" name="condicion" class="form-control" placeholder="Condicion" v-model="categoria.condicion" requiered>
+                                        <select class="form-control" name="" id="condicion" v-model="categoria.condicion">
+                                    <option value="0">Inactivo</option>
+                                    <option value="1">Activo</option>
+                                  </select>
                                     </div>
                                 </div>
-                               
+
+                                                           
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
@@ -163,20 +156,67 @@
         data(){
             return {
                 categorias: [],
+                catCopia: [],
                 modoEditar: false,
                 error: false,
                 eliminado: 0,
                 edicion: 0,
+                actualOrden:'nombre',
+                actualDireccionOrden:'asc',
+                tamPagina:5,
+                pagActual:1,
+                busqueda: '',
+                filtro: 'nombre',
                 categoria: {id: 0, nombre: '', descripcion: '', condicion: 1}
             }
         },
         created(){
             axios.get('/categorias').then(res=>{
                     this.categorias = res.data;
+                    this.catCopia = this.categorias;
                     //console.log(res.data[0]['nombre']);
             });
         },
+        computed : {
+            ordenados:function() {
+                return this.categorias.sort((a,b) => {
+                let modifier = 1;
+                if(this.actualDireccionOrden === 'desc') modifier = -1;
+                if(a[this.actualOrden] < b[this.actualOrden]) return -1 * modifier;
+                if(a[this.actualOrden] > b[this.actualOrden]) return 1 * modifier;
+                return 0;
+                }).filter((row, index) => {
+                    let incio = (this.pagActual-1)*this.tamPagina;
+                    let final = this.pagActual*this.tamPagina;
+                    if(index >= incio && index < final) return true;
+                });
+            }
+        },
         methods:{
+            ordenar(s){
+                if(s === this.actualOrden) {
+                    this.actualDireccionOrden = this.actualDireccionOrden ==='asc'?'desc':'asc';
+                }
+                this.actualOrden = s;
+            },
+            siguiente:function() {
+                if((this.pagActual*this.tamPagina) < this.categorias.length) this.pagActual++;
+            },
+            anterior:function() {
+                if(this.pagActual > 1) this.pagActual--;
+            },
+            buscar(){
+                this.categorias = this.catCopia;
+                this.categorias = this.categorias.filter(
+                categoria =>{
+                    if(this.filtro == 'nombre'){
+                        return categoria.nombre.includes(this.busqueda);
+                    }
+                    else if(this.filtro == 'descripcion'){
+                        return categoria.descripcion.includes(this.busqueda);
+                    }
+                })
+            },
             agregar(){
                 
                 if(this.categoria.nombre.trim() === '' || this.categoria.descripcion.trim() === ''){
@@ -210,6 +250,7 @@
                     this.modoEditar = false;
                     const index = this.categorias.findIndex(item => item.id === modCategoria.id);
                     this.categorias[index] = res.data;
+                    this.buscar();
                     $('#modalNuevo').modal('hide');
                 })
             },
