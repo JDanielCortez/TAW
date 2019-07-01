@@ -4,6 +4,7 @@ namespace app\Http\Controllers;
 
 use Illuminate\Http\Request;
 use app\Articulo;
+use app\Categoria;
 
 class ArticuloController extends Controller
 {
@@ -12,16 +13,31 @@ class ArticuloController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         //
         if($request->ajax()){
-            return Categoria::all();
+            return Articulo::
+            join('categorias', 'articulos.idcategoria', '=', 'categorias.id')
+            ->select('articulos.idarticulo', 'categorias.nombre as categoria', 'categorias.id as idcategoria', 'articulos.codigo', 'articulos.nombre', 'articulos.precio_venta', 'articulos.stock', 'articulos.descripcion', 'articulos.condicion')
+            ->get();
         }else{
             return view('principal/contenido');
         }
     }
 
+
+    public function getCategorias(Request $request)
+    {
+        
+        if($request->ajax()){
+            return Categoria::
+            select('id','nombre')
+            ->get();
+        }else{
+            return view('principal/contenido');
+        }
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -42,7 +58,7 @@ class ArticuloController extends Controller
     {
         //
         $articulo = new Articulo();
-        $articulo->idcategoria = $request->idcategoria;
+        $articulo->idcategoria = $request->categoria;
         $articulo->codigo = $request->codigo;
         $articulo->nombre = $request->nombre;
         $articulo->precio_venta = $request->precio_venta;
@@ -88,7 +104,7 @@ class ArticuloController extends Controller
     {
         //
         $articulo = Articulo::find($id);
-        $articulo->idcategoria = $request->idcategoria;
+        $articulo->idcategoria = $request->categoria;
         $articulo->codigo = $request->codigo;
         $articulo->nombre = $request->nombre;
         $articulo->precio_venta = $request->precio_venta;

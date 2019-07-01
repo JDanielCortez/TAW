@@ -14,7 +14,7 @@
 // Route::get('/', function () {
 //      return view('principal/contenido');
 // });
-
+Route::get('articulos/categorias', 'ArticuloController@getCategorias');
 Route::resource('/categorias', 'CategoriaController');
 Route::resource('/articulos', 'ArticuloController');
 

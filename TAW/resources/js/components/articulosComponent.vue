@@ -11,7 +11,7 @@
                 <div class="card">
                     <div class="card-header">
                         <i class="fa fa-align-justify"></i> Articulos
-                        <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#modalNuevo">
+                        <button @click="modoEditar=false" type="button" class="btn btn-secondary" data-toggle="modal" data-target="#modalNuevo">
                             <i class="icon-plus"></i>&nbsp;Nuevo
                         </button>
                     </div>
@@ -44,22 +44,25 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
+                                <tr v-for="(item, index) in articulos" :key="index">
                                     <td>
-                                        <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modalNuevo">
+                                        <button v-on:click="editar(index)" type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modalNuevo">
                                           <i class="icon-pencil"></i>
                                         </button> &nbsp;
-                                        <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modalEliminar">
+                                        <button v-on:click="eliminado = index" type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modalEliminar">
                                           <i class="icon-trash"></i>
                                         </button>
                                     </td>
-                                    <td>Computo</td>
-                                    <td>101010</td>
-                                    <td>HP 100 LP</td>
-                                    <td>$7000</td>
-                                    <td>2000</td>
-                                    <td>Computadora HP</td>
-                                    <td>Nuevo</td> 
+                                    <td>{{item.categoria}}</td>
+                                    <td>{{item.codigo}}</td>
+                                    <td>{{item.nombre}}</td>
+                                    <td>{{item.precio_venta}}</td>
+                                    <td>{{item.stock}}</td>
+                                    <td>{{item.descripcion}}</td>
+                                     <td>
+                                        <span class="badge badge-success" v-if="item.condicion == 1">Disponible</span>
+                                        <span class="badge badge-danger" v-else="">Agotado</span>
+                                    </td> 
                                 </tr>
                                
                             </tbody>
@@ -95,58 +98,73 @@
                 <div class="modal-dialog modal-primary modal-lg" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h4 class="modal-title">Agregar articulo</h4>
+                            <h4 class="modal-title" v-if="modoEditar">Editar articulo</h4>
+                            <h4 class="modal-title" v-else>Agregar articulo</h4>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                               <span aria-hidden="true">×</span>
                             </button>
                         </div>
-                        <div class="modal-body">
-                            <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
+                        <form  @submit.prevent="accion" class="form-horizontal">
+                            <div class="modal-body">
+                                <input type="text" v-model="articulo.idarticulo" v-if="modoEditar">
                                 <div class="form-group row">
-                                    <label class="col-md-3 form-control-label" for="text-input">Nombre</label>
+                                     <label for="categoria" class="col-md-3 form-control-label">Categoria</label>
                                     <div class="col-md-9">
-                                        <input type="text" id="nombre" name="nombre" class="form-control" placeholder="Nombre del producto">
+                                        <select class="form-control" name="" id="categoria" v-model="articulo.categoria">
+                                            <option v-for="cat in categorias" v-bind:value="cat.id">{{cat.nombre}}</option>
+                                        </select>
+                                    </div>
+                                </div> 
+
+                                <div class="form-group row">
+                                    <label class="col-md-3 form-control-label" for="categoria">Codigo</label>
+                                    <div class="col-md-9">
+                                        <input type="text" id="categoria" name="nombre" class="form-control" placeholder="Nombre del producto" v-model="articulo.codigo">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-md-3 form-control-label" for="nombre">Nombre</label>
+                                    <div class="col-md-9">
+                                        <input type="text" id="nombre" name="nombre" class="form-control" placeholder="Nombre del producto" v-model="articulo.nombre">
                                         <span class="help-block">(*) Ingrese el nombre del articulo</span>
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-md-3 form-control-label" for="email-input">Descripción</label>
+                                    <label class="col-md-3 form-control-label" for="pventa">Precio de Venta</label>
                                     <div class="col-md-9">
-                                        <input type="email" id="descripcion" name="descripcion" class="form-control" placeholder="Enter Email">
+                                        <input type="text" id="pventa" name="descripcion" class="form-control" placeholder="Precio de Venta" v-model="articulo.precio_venta">
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-md-3 form-control-label" for="text-input">Categoria</label>
+                                    <label class="col-md-3 form-control-label" for="stock">Stock</label>
                                     <div class="col-md-9">
-                                        <input type="text" id="categoria" name="categoria" class="form-control" placeholder="Nombre de categoría">
-                                        <span class="help-block">(*) Ingrese el nombre del categoría</span>
+                                        <input type="text" id="stock" name="categoria" class="form-control" placeholder="Stock" v-model="articulo.stock">
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-md-3 form-control-label" for="text-input">Precio</label>
+                                    <label class="col-md-3 form-control-label" for="descripcion">Descripcion</label>
                                     <div class="col-md-9">
-                                        <input type="text" id="precio" name="precio" class="form-control" placeholder="$10000">
+                                        <input type="text" id="descripcion" name="precio" class="form-control" placeholder="Descripción" v-model="articulo.descripcion">
                                     </div>
                                 </div>
+                                
                                 <div class="form-group row">
-                                    <label class="col-md-3 form-control-label" for="text-input">Nombre</label>
+                                     <label for="condicion" class="col-md-3 form-control-label">Condición</label>
                                     <div class="col-md-9">
-                                        <input type="text" id="unidad" name="unidad" class="form-control" placeholder="Unidad de medida">
-                                        <span class="help-block">(*) Ingrese la unidad de medida correspondiente al producot e. Pz, gr, ml</span>
+                                        <select class="form-control" name="" id="condicion" v-model="articulo.condicion">
+                                            <option value="0">Agotado</option>
+                                            <option value="1">Disponible</option>
+                                        </select>
                                     </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label class="col-md-3 form-control-label" for="text-input">Nombre</label>
-                                    <div class="col-md-9">
-                                        <input type="text" id="cantidad" name="cantidad" class="form-control" placeholder="Cantidad">
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                            <button type="button" class="btn btn-primary">Guardar</button>
-                        </div>
+                                </div> 
+                            
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                <button type="submit" class="btn btn-primary">Guardar</button>
+                            </div>
+                        </form>
                     </div>
                     <!-- /.modal-content -->
                 </div>
@@ -168,7 +186,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                            <button type="button" class="btn btn-danger">Eliminar</button>
+                            <button v-on:click="eliminar" type="button" class="btn btn-danger">Eliminar</button>
                         </div>
                     </div>
                     <!-- /.modal-content -->
@@ -182,7 +200,92 @@
 
 <script>
     export default {
-
+        data(){
+            return {
+                articulos: [],
+                artCopia: [],
+                categorias: [],
+                modoEditar: false,
+                error: false,
+                eliminado: 0,
+                edicion: 0,
+                actualOrden:'nombre',
+                actualDireccionOrden:'asc',
+                tamPagina:5,
+                pagActual:1,
+                busqueda: '',
+                filtro: 'nombre',
+                articulo: {idarticulo: 0, categoria: 0, codigo:'', nombre:'', precio_venta: 0,stock: 0, descripcion : '', condicion:1}
+            }
+        },
+        created(){
+            axios.get('/articulos').then(res=>{
+                    this.articulos = res.data;
+                    this.artCopia = this.articulos;
+                    console.log(res.data[0]);
+            });
+            axios.get('/articulos/categorias').then(res=>{
+                    this.categorias = res.data;
+                    console.log(res.data[0]);
+            });
+        },
+        methods:{
+            agregar(){
+                if(this.articulo.categoria === 0 || this.articulo.nombre.trim() === '' || this.articulo.codigo.trim() === '' || this.articulo.precio_venta === 0 || this.articulo.stock === 0 || this.articulo.descripcion.trim() === '' ){
+                    this.error = true;
+                    alert('Debes completar todos los campos antes de guardar');
+                    return;
+                }
+                const nuevArticulo = this.articulo;
+                this.articulo = {idarticulo: 0, categoria: 0, codigo:'', nombre:'', precio_venta: 0,stock: 0, descripcion : '', condicion:1};
+                axios.post('/articulos', nuevArticulo)
+                    .then((res) =>{
+                        const artServidor = res.data;
+                        this.articulos.push(artServidor);
+                        $('#modalNuevo').modal('hide');
+                    });
+                
+            },
+            editar(index){
+                this.modoEditar = true;
+                this.edicion = index;
+                this.articulo.idarticulo = this.articulos[index].idarticulo;
+                this.articulo.categoria = this.articulos[index].idcategoria;
+                this.articulo.codigo = this.articulos[index].codigo;
+                this.articulo.nombre = this.articulos[index].nombre;
+                this.articulo.precio_venta = this.articulos[index].precio_venta;
+                this.articulo.stock = this.articulos[index].stock;
+                this.articulo.descripcion = this.articulos[index].descripcion; 
+                this.articulo.condicion = this.articulos[index].condicion;               
+            },
+            actualizar(){
+                const modArticulo = this.articulo;
+                this.articulo = {idarticulo: 0, categoria: 0, codigo:'', nombre:'', precio_venta: 0,stock: 0, descripcion : '', condicion:1};
+                axios.put(`/articulos/${modArticulo.idarticulo}`, modArticulo)
+                .then(res=>{
+                    this.modoEditar = false;
+                    const index = this.articulos.findIndex(item => item.idarticulo === modArticulo.idarticulo);
+                    this.articulos[index] = res.data;
+                    //this.buscar();
+                    $('#modalNuevo').modal('hide');
+                })
+            },
+            accion(){
+                if(!this.modoEditar){
+                    this.agregar();
+                }else{
+                    this.actualizar();
+                }
+            },
+            eliminar(){
+                console.log(this.articulos[this.eliminado].idarticulo);
+                axios.delete(`/articulos/${this.articulos[this.eliminado].idarticulo}`)
+                .then(()=>{
+                    this.articulos.splice(this.eliminado, 1);
+                    $('#modalEliminar').modal('hide');
+                })
+            }
+        },
         mounted() {
             console.log('Categorias Component mounted.');
         }
