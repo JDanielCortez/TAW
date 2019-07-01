@@ -8,6 +8,8 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 
+import router from './routes.js'
+
 
 /**
  * The following block of code may be used to automatically register your
@@ -20,12 +22,12 @@ window.Vue = require('vue');
 // const files = require.context('./', true, /\.vue$/i);
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
 
-Vue.component('categorias-component', require('./components/categoriasComponent.vue').default);
-Vue.component('articulos-component', require('./components/articulosComponent.vue').default);
-Vue.component('ingresos-component', require('./components/ingresosComponent.vue').default);
-Vue.component('proveedores-component', require('./components/proveedoresComponent.vue').default);
-Vue.component('ventas-component', require('./components/ventasComponent.vue').default);
-Vue.component('clientes-component', require('./components/clientesComponent.vue').default);
+// Vue.component('categorias-component', require('./components/categoriasComponent.vue').default);
+// Vue.component('articulos-component', require('./components/articulosComponent.vue').default);
+// Vue.component('ingresos-component', require('./components/ingresosComponent.vue').default);
+// Vue.component('proveedores-component', require('./components/proveedoresComponent.vue').default);
+// Vue.component('ventas-component', require('./components/ventasComponent.vue').default);
+// Vue.component('clientes-component', require('./components/clientesComponent.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -38,9 +40,5 @@ const app = new Vue({
     data : {
         menu : 0
     },
-    methods : {
-        hola: function(){
-            alert('holaasdasdsad');
-        }
-    }
+    router
 });

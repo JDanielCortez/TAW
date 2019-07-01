@@ -5,17 +5,49 @@ import Router from 'vue-router'
 
 Vue.use(Router)
 
-export default new Router({    
+import categorias from './components/categoriasComponent.vue'
+import articulos from './components/articulosComponent.vue'
+import ingresos from './components/ingresosComponent.vue'
+import proveedores from './components/proveedoresComponent.vue'
+import ventas from './components/ventasComponent.vue'
+import clientes from './components/clientesComponent.vue'
+
+export default new Router({   
 	routes: [
 		{
-			path: '/a',
+			path: '/',
 			name: 'home',
-			component: require('./components/categoriasComponent.vue').default
+			component: categorias
 		},
 		{
-			path: '/',
+			path: '/categorias',
+			name: 'categorias',
+			component: categorias
+		},
+		{
+			path: '/articulos',
 			name: 'articulos',
-			component: require('./components/categoriasComponent.vue').default
+			component: articulos
+		},
+		{
+			path: '/ingresos',
+			name: 'ingresos',
+			component: ingresos
+		},
+		{
+			path: '/proveedores',
+			name: 'proveedores',
+			component: proveedores
+		},
+		{
+			path: '/ventas',
+			name: 'ventas',
+			component: ventas
+		},
+		{
+			path: '/clientes',
+			name: 'clientes',
+			component: clientes
 		}
 	],
 	mode: 'history'//,

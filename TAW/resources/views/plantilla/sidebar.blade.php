@@ -2,42 +2,44 @@
     <nav class="sidebar-nav">
         <ul class="nav">
         <!-- Inicializar la variable menu = 0 que se encuentra en app.js -->
-            <li v-on:click="menu=0" class="nav-item">
-                <a class="nav-link active" href="#"><i class="icon-speedometer"></i> Escritorio</a>
+            <li class="nav-item">
+                <router-link class="nav-link active" to='/categorias'><i class="icon-speedometer"></i> Escritorio</router-link>
             </li>
             <li class="nav-title">
                 Mantenimiento
-            </li>
+            </li> 
             <li class="nav-item nav-dropdown">
                 <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-bag"></i> Almacén</a>
                 <ul class="nav-dropdown-items">
-                    <li v-on:click="menu=0" class="nav-item">
-                        <a class="nav-link" ><i class="icon-bag"></i> Categorías</a>
+                    <li  class="nav-item">
+                        <router-link to="/categorias"class="nav-link" ><i class="icon-bag"></i> Categorías</router-link>
+                        <!-- <a class="nav-link" ><i class="icon-bag"></i> Categorías</a> -->
                     </li>
                     <li v-on:click="menu=1" class="nav-item">
-                        <a class="nav-link" ><i class="icon-bag"></i> Artículos</a>
+                        <router-link to="/articulos"class="nav-link" ><i class="icon-bag"></i> Articulos</router-link>
+                        <!-- <a class="nav-link" ><i class="icon-bag"></i> Artículos</a> -->
                     </li>
                 </ul>
             </li>
             <li  class="nav-item nav-dropdown">
                 <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-wallet"></i> Compras</a>
                 <ul class="nav-dropdown-items">
-                    <li v-on:click="menu=2" class="nav-item">
-                        <a class="nav-link" ><i class="icon-wallet"></i> Ingresos</a>
+                    <li class="nav-item">
+                        <router-link to='/ingresos' class="nav-link" ><i class="icon-wallet"></i> Ingresos</router-link>
                     </li>
-                    <li v-on:click="menu=3" class="nav-item">
-                        <a class="nav-link" ><i class="icon-notebook"></i> Proveedores</a>
+                    <li class="nav-item">
+                        <router-link to='/proveedores' class="nav-link" ><i class="icon-notebook"></i> Proveedores</router-link>
                     </li>
                 </ul>
             </li>
             <li class="nav-item nav-dropdown">
                 <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-basket"></i> Ventas</a>
                 <ul class="nav-dropdown-items">
-                    <li v-on:click="menu=4" class="nav-item">
-                        <a class="nav-link" ><i class="icon-basket-loaded"></i> Ventas</a>
+                    <li  class="nav-item">
+                        <router-link to='/ventas' class="nav-link" ><i class="icon-basket-loaded"></i> Ventas</router-link>
                     </li>
-                    <li v-on:click="menu=5" class="nav-item">
-                        <a class="nav-link" ><i class="icon-notebook"></i> Clientes</a>
+                    <li  class="nav-item">
+                        <router-link to='/clientes' class="nav-link" ><i class="icon-notebook"></i> Clientes</router-link>
                     </li>
                 </ul>
             </li>

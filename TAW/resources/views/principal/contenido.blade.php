@@ -2,7 +2,9 @@
     @extends ('principal')
     @section ('contenido')
 
-    <template v-if="menu==0">
+    <router-view></router-view>
+
+    <!-- <template v-if="menu==0">
         <categorias-component></categorias-component>
     </template>
 
@@ -24,6 +26,6 @@
 
     <template v-if="menu==5">
         <clientes-component></clientes-component>
-    </template>
+    </template> -->
 
     @endsection

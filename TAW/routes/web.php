@@ -11,23 +11,25 @@
 |
 */
 
-Route::get('/', function () {
+// Route::get('/', function () {
+//      return view('principal/contenido');
+// });
+
+Route::resource('/categorias', 'CategoriaController');
+
+Route::get('/{vue_capture?}', function () {
      return view('principal/contenido');
-});
+ })->where('vue_capture', '[\/\w\.-]*');
 
-// Route::get('/{vue_capture?}', function () {
-//     return view('principal/contenido');
-// })->where('vue_capture', '[\/\w\.-]*');
-
-//Mostrar una ruta limpia
-Route::get('/usr/{id}', function ($id) {
-    return "Mostrando ID del usuario {$id}";
-})->where('id','[0-9]+');
+// //Mostrar una ruta limpia
+// Route::get('/usr/{id}', function ($id) {
+//     return "Mostrando ID del usuario {$id}";
+// })->where('id','[0-9]+');
 
 //Ruta plantilla principal con setion & yield
-Route::get('/principal', function () {
-    return view('principal/contenido');
-});
+// Route::get('/', function () {
+//     return view('principal/contenido');
+// });
 /*
 Route::get('/articulos', function () {
     return view('principal/articulos');
