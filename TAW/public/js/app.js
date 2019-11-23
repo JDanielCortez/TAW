@@ -2508,6 +2508,34 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
     console.log('Categorias Component mounted.');
@@ -2525,6 +2553,51 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -2867,6 +2940,35 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
     console.log('Categorias Component mounted.');
@@ -2884,6 +2986,45 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -22333,7 +22474,7 @@ var staticRenderFns = [
               _c("div", { staticClass: "modal-content" }, [
                 _c("div", { staticClass: "modal-header" }, [
                   _c("h4", { staticClass: "modal-title" }, [
-                    _vm._v("Agregar categoría")
+                    _vm._v("Agregar Venta")
                   ]),
                   _vm._v(" "),
                   _c(
@@ -22371,7 +22512,7 @@ var staticRenderFns = [
                           "label",
                           {
                             staticClass: "col-md-3 form-control-label",
-                            attrs: { for: "text-input" }
+                            attrs: { for: "" }
                           },
                           [_vm._v("Nombre")]
                         ),
@@ -22379,17 +22520,8 @@ var staticRenderFns = [
                         _c("div", { staticClass: "col-md-9" }, [
                           _c("input", {
                             staticClass: "form-control",
-                            attrs: {
-                              type: "text",
-                              id: "nombre",
-                              name: "nombre",
-                              placeholder: "Nombre de categoría"
-                            }
-                          }),
-                          _vm._v(" "),
-                          _c("span", { staticClass: "help-block" }, [
-                            _vm._v("(*) Ingrese el nombre de la categoría")
-                          ])
+                            attrs: { type: "text", id: "descripcion", name: "" }
+                          })
                         ])
                       ]),
                       _vm._v(" "),
@@ -22398,20 +22530,87 @@ var staticRenderFns = [
                           "label",
                           {
                             staticClass: "col-md-3 form-control-label",
-                            attrs: { for: "email-input" }
+                            attrs: { for: "" }
                           },
-                          [_vm._v("Descripción")]
+                          [_vm._v("Tipo documento")]
                         ),
                         _vm._v(" "),
                         _c("div", { staticClass: "col-md-9" }, [
                           _c("input", {
                             staticClass: "form-control",
-                            attrs: {
-                              type: "email",
-                              id: "descripcion",
-                              name: "descripcion",
-                              placeholder: "Enter Email"
-                            }
+                            attrs: { type: "text", id: "descripcion", name: "" }
+                          })
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "form-group row" }, [
+                        _c(
+                          "label",
+                          {
+                            staticClass: "col-md-3 form-control-label",
+                            attrs: { for: "" }
+                          },
+                          [_vm._v("Numero documento")]
+                        ),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "col-md-9" }, [
+                          _c("input", {
+                            staticClass: "form-control",
+                            attrs: { type: "text", id: "descripcion", name: "" }
+                          })
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "form-group row" }, [
+                        _c(
+                          "label",
+                          {
+                            staticClass: "col-md-3 form-control-label",
+                            attrs: { for: "" }
+                          },
+                          [_vm._v("Direccion")]
+                        ),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "col-md-9" }, [
+                          _c("input", {
+                            staticClass: "form-control",
+                            attrs: { type: "text", id: "descripcion", name: "" }
+                          })
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "form-group row" }, [
+                        _c(
+                          "label",
+                          {
+                            staticClass: "col-md-3 form-control-label",
+                            attrs: { for: "" }
+                          },
+                          [_vm._v("Telefono")]
+                        ),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "col-md-9" }, [
+                          _c("input", {
+                            staticClass: "form-control",
+                            attrs: { type: "text", id: "descripcion", name: "" }
+                          })
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "form-group row" }, [
+                        _c(
+                          "label",
+                          {
+                            staticClass: "col-md-3 form-control-label",
+                            attrs: { for: "" }
+                          },
+                          [_vm._v("E-mail")]
+                        ),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "col-md-9" }, [
+                          _c("input", {
+                            staticClass: "form-control",
+                            attrs: { type: "text", id: "descripcion", name: "" }
                           })
                         ])
                       ])
@@ -22468,7 +22667,7 @@ var staticRenderFns = [
               _c("div", { staticClass: "modal-content" }, [
                 _c("div", { staticClass: "modal-header" }, [
                   _c("h4", { staticClass: "modal-title" }, [
-                    _vm._v("Eliminar Categoría")
+                    _vm._v("Eliminar Cliente")
                   ]),
                   _vm._v(" "),
                   _c(
@@ -22490,7 +22689,7 @@ var staticRenderFns = [
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "modal-body" }, [
-                  _c("p", [_vm._v("Estas seguro de eliminar la categoría?")])
+                  _c("p", [_vm._v("Estas seguro de eliminar al cliente?")])
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "modal-footer" }, [
@@ -22565,7 +22764,22 @@ var staticRenderFns = [
         _c("div", { staticClass: "card" }, [
           _c("div", { staticClass: "card-header" }, [
             _c("i", { staticClass: "fa fa-align-justify" }),
-            _vm._v(" Ingresos\n            ")
+            _vm._v(" Ingresos\n                "),
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-secondary",
+                attrs: {
+                  type: "button",
+                  "data-toggle": "modal",
+                  "data-target": "#modalNuevo"
+                }
+              },
+              [
+                _c("i", { staticClass: "icon-plus" }),
+                _vm._v(" Nuevo\n                ")
+              ]
+            )
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "card-body" }, [
@@ -22769,7 +22983,7 @@ var staticRenderFns = [
               _c("div", { staticClass: "modal-content" }, [
                 _c("div", { staticClass: "modal-header" }, [
                   _c("h4", { staticClass: "modal-title" }, [
-                    _vm._v("Agregar categoría")
+                    _vm._v("Agregar Ingreso")
                   ]),
                   _vm._v(" "),
                   _c(
@@ -22809,7 +23023,7 @@ var staticRenderFns = [
                             staticClass: "col-md-3 form-control-label",
                             attrs: { for: "text-input" }
                           },
-                          [_vm._v("Nombre")]
+                          [_vm._v("Proveedor")]
                         ),
                         _vm._v(" "),
                         _c("div", { staticClass: "col-md-9" }, [
@@ -22819,13 +23033,9 @@ var staticRenderFns = [
                               type: "text",
                               id: "nombre",
                               name: "nombre",
-                              placeholder: "Nombre de categoría"
+                              placeholder: "  "
                             }
-                          }),
-                          _vm._v(" "),
-                          _c("span", { staticClass: "help-block" }, [
-                            _vm._v("(*) Ingrese el nombre de la categoría")
-                          ])
+                          })
                         ])
                       ]),
                       _vm._v(" "),
@@ -22834,19 +23044,157 @@ var staticRenderFns = [
                           "label",
                           {
                             staticClass: "col-md-3 form-control-label",
-                            attrs: { for: "email-input" }
+                            attrs: { for: "text-input" }
                           },
-                          [_vm._v("Descripción")]
+                          [_vm._v("Tipo de Comprobante")]
                         ),
                         _vm._v(" "),
                         _c("div", { staticClass: "col-md-9" }, [
                           _c("input", {
                             staticClass: "form-control",
                             attrs: {
-                              type: "email",
-                              id: "descripcion",
-                              name: "descripcion",
-                              placeholder: "Enter Email"
+                              type: "text",
+                              id: "nombre",
+                              name: "nombre",
+                              placeholder: "  "
+                            }
+                          })
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "form-group row" }, [
+                        _c(
+                          "label",
+                          {
+                            staticClass: "col-md-3 form-control-label",
+                            attrs: { for: "text-input" }
+                          },
+                          [_vm._v("Serie de Comprobante")]
+                        ),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "col-md-9" }, [
+                          _c("input", {
+                            staticClass: "form-control",
+                            attrs: {
+                              type: "text",
+                              id: "nombre",
+                              name: "nombre",
+                              placeholder: "  "
+                            }
+                          })
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "form-group row" }, [
+                        _c(
+                          "label",
+                          {
+                            staticClass: "col-md-3 form-control-label",
+                            attrs: { for: "text-input" }
+                          },
+                          [_vm._v("Numero de Comprobante")]
+                        ),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "col-md-9" }, [
+                          _c("input", {
+                            staticClass: "form-control",
+                            attrs: {
+                              type: "text",
+                              id: "nombre",
+                              name: "nombre",
+                              placeholder: "  "
+                            }
+                          })
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "form-group row" }, [
+                        _c(
+                          "label",
+                          {
+                            staticClass: "col-md-3 form-control-label",
+                            attrs: { for: "text-input" }
+                          },
+                          [_vm._v("Fecha y Hora")]
+                        ),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "col-md-9" }, [
+                          _c("input", {
+                            staticClass: "form-control",
+                            attrs: {
+                              type: "text",
+                              id: "nombre",
+                              name: "nombre",
+                              placeholder: "  "
+                            }
+                          })
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "form-group row" }, [
+                        _c(
+                          "label",
+                          {
+                            staticClass: "col-md-3 form-control-label",
+                            attrs: { for: "text-input" }
+                          },
+                          [_vm._v("Impuesto")]
+                        ),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "col-md-9" }, [
+                          _c("input", {
+                            staticClass: "form-control",
+                            attrs: {
+                              type: "text",
+                              id: "nombre",
+                              name: "nombre",
+                              placeholder: "  "
+                            }
+                          })
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "form-group row" }, [
+                        _c(
+                          "label",
+                          {
+                            staticClass: "col-md-3 form-control-label",
+                            attrs: { for: "text-input" }
+                          },
+                          [_vm._v("Total de compra")]
+                        ),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "col-md-9" }, [
+                          _c("input", {
+                            staticClass: "form-control",
+                            attrs: {
+                              type: "text",
+                              id: "nombre",
+                              name: "nombre",
+                              placeholder: "  "
+                            }
+                          })
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "form-group row" }, [
+                        _c(
+                          "label",
+                          {
+                            staticClass: "col-md-3 form-control-label",
+                            attrs: { for: "text-input" }
+                          },
+                          [_vm._v("Estado")]
+                        ),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "col-md-9" }, [
+                          _c("input", {
+                            staticClass: "form-control",
+                            attrs: {
+                              type: "text",
+                              id: "nombre",
+                              name: "nombre",
+                              placeholder: "  "
                             }
                           })
                         ])
@@ -22904,7 +23252,7 @@ var staticRenderFns = [
               _c("div", { staticClass: "modal-content" }, [
                 _c("div", { staticClass: "modal-header" }, [
                   _c("h4", { staticClass: "modal-title" }, [
-                    _vm._v("Eliminar Categoría")
+                    _vm._v("Eliminar Ingreso")
                   ]),
                   _vm._v(" "),
                   _c(
@@ -22926,7 +23274,7 @@ var staticRenderFns = [
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "modal-body" }, [
-                  _c("p", [_vm._v("Estas seguro de eliminar la categoría?")])
+                  _c("p", [_vm._v("Estas seguro de eliminar el Ingreso?")])
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "modal-footer" }, [
@@ -23254,34 +23602,7 @@ var staticRenderFns = [
                               type: "text",
                               id: "nombre",
                               name: "nombre",
-                              placeholder: "Nombre de proveedor"
-                            }
-                          }),
-                          _vm._v(" "),
-                          _c("span", { staticClass: "help-block" }, [
-                            _vm._v("(*) Ingrese el nombre del proveedor")
-                          ])
-                        ])
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "form-group row" }, [
-                        _c(
-                          "label",
-                          {
-                            staticClass: "col-md-3 form-control-label",
-                            attrs: { for: "email-input" }
-                          },
-                          [_vm._v("Descripción")]
-                        ),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "col-md-9" }, [
-                          _c("input", {
-                            staticClass: "form-control",
-                            attrs: {
-                              type: "email",
-                              id: "descripcion",
-                              name: "descripcion",
-                              placeholder: "Enter Email"
+                              placeholder: "Nombre de categoría"
                             }
                           })
                         ])
@@ -23292,9 +23613,9 @@ var staticRenderFns = [
                           "label",
                           {
                             staticClass: "col-md-3 form-control-label",
-                            attrs: { for: "text-input" }
+                            attrs: { for: "email-input" }
                           },
-                          [_vm._v("Nombre de contacto")]
+                          [_vm._v("Tipo documento")]
                         ),
                         _vm._v(" "),
                         _c("div", { staticClass: "col-md-9" }, [
@@ -23302,17 +23623,11 @@ var staticRenderFns = [
                             staticClass: "form-control",
                             attrs: {
                               type: "text",
-                              id: "contacto",
-                              name: "contacto",
-                              placeholder: "Nombre de contacto"
+                              id: "descripcion",
+                              name: "descripcion",
+                              placeholder: "  "
                             }
-                          }),
-                          _vm._v(" "),
-                          _c("span", { staticClass: "help-block" }, [
-                            _vm._v(
-                              "(*) Ingrese el nombre de la persona a contactar"
-                            )
-                          ])
+                          })
                         ])
                       ]),
                       _vm._v(" "),
@@ -23321,7 +23636,53 @@ var staticRenderFns = [
                           "label",
                           {
                             staticClass: "col-md-3 form-control-label",
-                            attrs: { for: "text-input" }
+                            attrs: { for: "email-input" }
+                          },
+                          [_vm._v("Numero documento")]
+                        ),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "col-md-9" }, [
+                          _c("input", {
+                            staticClass: "form-control",
+                            attrs: {
+                              type: "text",
+                              id: "descripcion",
+                              name: "descripcion",
+                              placeholder: "  "
+                            }
+                          })
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "form-group row" }, [
+                        _c(
+                          "label",
+                          {
+                            staticClass: "col-md-3 form-control-label",
+                            attrs: { for: "email-input" }
+                          },
+                          [_vm._v("Direccion")]
+                        ),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "col-md-9" }, [
+                          _c("input", {
+                            staticClass: "form-control",
+                            attrs: {
+                              type: "text",
+                              id: "descripcion",
+                              name: "descripcion",
+                              placeholder: "  "
+                            }
+                          })
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "form-group row" }, [
+                        _c(
+                          "label",
+                          {
+                            staticClass: "col-md-3 form-control-label",
+                            attrs: { for: "email-input" }
                           },
                           [_vm._v("Telefono")]
                         ),
@@ -23331,9 +23692,78 @@ var staticRenderFns = [
                             staticClass: "form-control",
                             attrs: {
                               type: "text",
-                              id: "telefono",
-                              name: "telefono",
-                              placeholder: "Telefono"
+                              id: "descripcion",
+                              name: "descripcion",
+                              placeholder: "  "
+                            }
+                          })
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "form-group row" }, [
+                        _c(
+                          "label",
+                          {
+                            staticClass: "col-md-3 form-control-label",
+                            attrs: { for: "email-input" }
+                          },
+                          [_vm._v("E-mail")]
+                        ),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "col-md-9" }, [
+                          _c("input", {
+                            staticClass: "form-control",
+                            attrs: {
+                              type: "text",
+                              id: "descripcion",
+                              name: "descripcion",
+                              placeholder: "  "
+                            }
+                          })
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "form-group row" }, [
+                        _c(
+                          "label",
+                          {
+                            staticClass: "col-md-3 form-control-label",
+                            attrs: { for: "email-input" }
+                          },
+                          [_vm._v("Contacto")]
+                        ),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "col-md-9" }, [
+                          _c("input", {
+                            staticClass: "form-control",
+                            attrs: {
+                              type: "text",
+                              id: "descripcion",
+                              name: "descripcion",
+                              placeholder: "  "
+                            }
+                          })
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "form-group row" }, [
+                        _c(
+                          "label",
+                          {
+                            staticClass: "col-md-3 form-control-label",
+                            attrs: { for: "email-input" }
+                          },
+                          [_vm._v("Telefono de contacto")]
+                        ),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "col-md-9" }, [
+                          _c("input", {
+                            staticClass: "form-control",
+                            attrs: {
+                              type: "text",
+                              id: "descripcion",
+                              name: "descripcion",
+                              placeholder: "  "
                             }
                           })
                         ])
@@ -23391,7 +23821,7 @@ var staticRenderFns = [
               _c("div", { staticClass: "modal-content" }, [
                 _c("div", { staticClass: "modal-header" }, [
                   _c("h4", { staticClass: "modal-title" }, [
-                    _vm._v("Eliminar Categoría")
+                    _vm._v("Eliminar Proveedor")
                   ]),
                   _vm._v(" "),
                   _c(
@@ -23413,7 +23843,7 @@ var staticRenderFns = [
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "modal-body" }, [
-                  _c("p", [_vm._v("Estas seguro de eliminar la categoría?")])
+                  _c("p", [_vm._v("Estas seguro de eliminar al proveedor?")])
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "modal-footer" }, [
@@ -23745,7 +24175,7 @@ var staticRenderFns = [
                             staticClass: "col-md-3 form-control-label",
                             attrs: { for: "text-input" }
                           },
-                          [_vm._v("Nombre")]
+                          [_vm._v("Cliente")]
                         ),
                         _vm._v(" "),
                         _c("div", { staticClass: "col-md-9" }, [
@@ -23755,7 +24185,7 @@ var staticRenderFns = [
                               type: "text",
                               id: "nombre",
                               name: "nombre",
-                              placeholder: "Nombre de categoría"
+                              placeholder: ""
                             }
                           })
                         ])
@@ -23766,20 +24196,123 @@ var staticRenderFns = [
                           "label",
                           {
                             staticClass: "col-md-3 form-control-label",
-                            attrs: { for: "email-input" }
+                            attrs: { for: "" }
                           },
-                          [_vm._v("Descripción")]
+                          [_vm._v("Tipo Comprobante")]
                         ),
                         _vm._v(" "),
                         _c("div", { staticClass: "col-md-9" }, [
                           _c("input", {
                             staticClass: "form-control",
-                            attrs: {
-                              type: "email",
-                              id: "descripcion",
-                              name: "descripcion",
-                              placeholder: "Enter Email"
-                            }
+                            attrs: { type: "text", id: "descripcion", name: "" }
+                          })
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "form-group row" }, [
+                        _c(
+                          "label",
+                          {
+                            staticClass: "col-md-3 form-control-label",
+                            attrs: { for: "" }
+                          },
+                          [_vm._v("Numero Comprobante")]
+                        ),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "col-md-9" }, [
+                          _c("input", {
+                            staticClass: "form-control",
+                            attrs: { type: "text", id: "descripcion", name: "" }
+                          })
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "form-group row" }, [
+                        _c(
+                          "label",
+                          {
+                            staticClass: "col-md-3 form-control-label",
+                            attrs: { for: "" }
+                          },
+                          [_vm._v("Serie Comprobante")]
+                        ),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "col-md-9" }, [
+                          _c("input", {
+                            staticClass: "form-control",
+                            attrs: { type: "text", id: "descripcion", name: "" }
+                          })
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "form-group row" }, [
+                        _c(
+                          "label",
+                          {
+                            staticClass: "col-md-3 form-control-label",
+                            attrs: { for: "" }
+                          },
+                          [_vm._v("Fecha y Hora")]
+                        ),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "col-md-9" }, [
+                          _c("input", {
+                            staticClass: "form-control",
+                            attrs: { type: "text", id: "descripcion", name: "" }
+                          })
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "form-group row" }, [
+                        _c(
+                          "label",
+                          {
+                            staticClass: "col-md-3 form-control-label",
+                            attrs: { for: "" }
+                          },
+                          [_vm._v("Impuesto")]
+                        ),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "col-md-9" }, [
+                          _c("input", {
+                            staticClass: "form-control",
+                            attrs: { type: "text", id: "descripcion", name: "" }
+                          })
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "form-group row" }, [
+                        _c(
+                          "label",
+                          {
+                            staticClass: "col-md-3 form-control-label",
+                            attrs: { for: "" }
+                          },
+                          [_vm._v("Total Venta")]
+                        ),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "col-md-9" }, [
+                          _c("input", {
+                            staticClass: "form-control",
+                            attrs: { type: "text", id: "descripcion", name: "" }
+                          })
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "form-group row" }, [
+                        _c(
+                          "label",
+                          {
+                            staticClass: "col-md-3 form-control-label",
+                            attrs: { for: "" }
+                          },
+                          [_vm._v("Estado")]
+                        ),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "col-md-9" }, [
+                          _c("input", {
+                            staticClass: "form-control",
+                            attrs: { type: "text", id: "descripcion", name: "" }
                           })
                         ])
                       ])
@@ -23836,7 +24369,7 @@ var staticRenderFns = [
               _c("div", { staticClass: "modal-content" }, [
                 _c("div", { staticClass: "modal-header" }, [
                   _c("h4", { staticClass: "modal-title" }, [
-                    _vm._v("Eliminar Categoría")
+                    _vm._v("Eliminar vanta")
                   ]),
                   _vm._v(" "),
                   _c(
@@ -23858,7 +24391,7 @@ var staticRenderFns = [
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "modal-body" }, [
-                  _c("p", [_vm._v("Estas seguro de eliminar la categoría?")])
+                  _c("p", [_vm._v("Estas seguro de eliminar la venta?")])
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "modal-footer" }, [

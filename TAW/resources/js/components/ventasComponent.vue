@@ -106,15 +106,54 @@
                         <div class="modal-body">
                             <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
                                 <div class="form-group row">
-                                    <label class="col-md-3 form-control-label" for="text-input">Nombre</label>
+                                    <label class="col-md-3 form-control-label" for="text-input">Cliente</label>
                                     <div class="col-md-9">
-                                        <input type="text" id="nombre" name="nombre" class="form-control" placeholder="Nombre de categoría">
+                                        <input type="text" id="nombre" name="nombre" class="form-control" placeholder="">
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-md-3 form-control-label" for="email-input">Descripción</label>
+                                    <label class="col-md-3 form-control-label" for="">Tipo Comprobante</label>
                                     <div class="col-md-9">
-                                        <input type="email" id="descripcion" name="descripcion" class="form-control" placeholder="Enter Email">
+                                        <input type="text" id="descripcion" name="" class="form-control" >
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-md-3 form-control-label" for="">Numero Comprobante</label>
+                                    <div class="col-md-9">
+                                        <input type="text" id="descripcion" name="" class="form-control" >
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-md-3 form-control-label" for="">Serie Comprobante</label>
+                                    <div class="col-md-9">
+                                        <input type="text" id="descripcion" name="" class="form-control" >
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-md-3 form-control-label" for="">Fecha y Hora</label>
+                                    <div class="col-md-9">
+                                        <input type="text" id="descripcion" name="" class="form-control" >
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-md-3 form-control-label" for="">Impuesto</label>
+                                    <div class="col-md-9">
+                                        <input type="text" id="descripcion" name="" class="form-control" >
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-md-3 form-control-label" for="">Total Venta</label>
+                                    <div class="col-md-9">
+                                        <input type="text" id="descripcion" name="" class="form-control" >
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-md-3 form-control-label" for="">Estado</label>
+                                    <div class="col-md-9">
+                                        <input type="text" id="descripcion" name="" class="form-control" >
                                     </div>
                                 </div>
                             </form>
@@ -134,13 +173,13 @@
                 <div class="modal-dialog modal-danger" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h4 class="modal-title">Eliminar Categoría</h4>
+                            <h4 class="modal-title">Eliminar vanta</h4>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                               <span aria-hidden="true">×</span>
                             </button>
                         </div>
                         <div class="modal-body">
-                            <p>Estas seguro de eliminar la categoría?</p>
+                            <p>Estas seguro de eliminar la venta?</p>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>

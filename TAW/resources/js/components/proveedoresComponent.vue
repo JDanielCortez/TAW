@@ -103,27 +103,56 @@
                                 <div class="form-group row">
                                     <label class="col-md-3 form-control-label" for="text-input">Nombre</label>
                                     <div class="col-md-9">
-                                        <input type="text" id="nombre" name="nombre" class="form-control" placeholder="Nombre de proveedor">
-                                        <span class="help-block">(*) Ingrese el nombre del proveedor</span>
+                                        <input type="text" id="nombre" name="nombre" class="form-control" placeholder="Nombre de categoría">
+                                        
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-md-3 form-control-label" for="email-input">Descripción</label>
+                                    <label class="col-md-3 form-control-label" for="email-input">Tipo documento</label>
                                     <div class="col-md-9">
-                                        <input type="email" id="descripcion" name="descripcion" class="form-control" placeholder="Enter Email">
+                                        <input type="text" id="descripcion" name="descripcion" class="form-control" placeholder="  ">
                                     </div>
                                 </div>
+
                                 <div class="form-group row">
-                                    <label class="col-md-3 form-control-label" for="text-input">Nombre de contacto</label>
+                                    <label class="col-md-3 form-control-label" for="email-input">Numero documento</label>
                                     <div class="col-md-9">
-                                        <input type="text" id="contacto" name="contacto" class="form-control" placeholder="Nombre de contacto">
-                                        <span class="help-block">(*) Ingrese el nombre de la persona a contactar</span>
+                                        <input type="text" id="descripcion" name="descripcion" class="form-control" placeholder="  ">
                                     </div>
                                 </div>
+
                                 <div class="form-group row">
-                                    <label class="col-md-3 form-control-label" for="text-input">Telefono</label>
+                                    <label class="col-md-3 form-control-label" for="email-input">Direccion</label>
                                     <div class="col-md-9">
-                                        <input type="text" id="telefono" name="telefono" class="form-control" placeholder="Telefono">
+                                        <input type="text" id="descripcion" name="descripcion" class="form-control" placeholder="  ">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-md-3 form-control-label" for="email-input">Telefono</label>
+                                    <div class="col-md-9">
+                                        <input type="text" id="descripcion" name="descripcion" class="form-control" placeholder="  ">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-md-3 form-control-label" for="email-input">E-mail</label>
+                                    <div class="col-md-9">
+                                        <input type="text" id="descripcion" name="descripcion" class="form-control" placeholder="  ">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-md-3 form-control-label" for="email-input">Contacto</label>
+                                    <div class="col-md-9">
+                                        <input type="text" id="descripcion" name="descripcion" class="form-control" placeholder="  ">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-md-3 form-control-label" for="email-input">Telefono de contacto</label>
+                                    <div class="col-md-9">
+                                        <input type="text" id="descripcion" name="descripcion" class="form-control" placeholder="  ">
                                     </div>
                                 </div>
                             </form>
@@ -143,13 +172,13 @@
                 <div class="modal-dialog modal-danger" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h4 class="modal-title">Eliminar Categoría</h4>
+                            <h4 class="modal-title">Eliminar Proveedor</h4>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                               <span aria-hidden="true">×</span>
                             </button>
                         </div>
                         <div class="modal-body">
-                            <p>Estas seguro de eliminar la categoría?</p>
+                            <p>Estas seguro de eliminar al proveedor?</p>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>

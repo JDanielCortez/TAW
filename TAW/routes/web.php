@@ -22,6 +22,10 @@ Route::get('/{vue_capture?}', function () {
      return view('principal/contenido');
  })->where('vue_capture', '[\/\w\.-]*');
 
+ Route::get('/welcome', function () {
+    return view('welcome');
+});
+
 // //Mostrar una ruta limpia
 // Route::get('/usr/{id}', function ($id) {
 //     return "Mostrando ID del usuario {$id}";
